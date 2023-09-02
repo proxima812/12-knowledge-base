@@ -1,0 +1,20 @@
+---
+import Head from "@components/Head.astro"
+const {  data, image } = Astro.props;
+const { title, description } = data;
+---
+
+<html lang="ru" class="scroll-smooth">
+ <head>
+  <Head
+   title={title}
+   description={description}
+   ogImage={image}
+   articleDate='article'
+  />
+ </head>
+ <body class="antialiased">
+  <slot />
+ </body>
+</html>
+

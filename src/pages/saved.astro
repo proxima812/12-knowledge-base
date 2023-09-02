@@ -1,0 +1,22 @@
+---
+
+import Base from "@layouts/Base.astro"
+import SavedPosts from 'src/components/SavedPosts'
+
+---
+
+<Base title="Сохраненные" description="">
+
+<button onclick="clearStorageAndReload();">Удалить все сохраненные посты</button>
+
+  <script is:inline>
+  function clearStorageAndReload() {
+      localStorage.clear();
+      location.reload();
+  }
+  </script>
+
+
+  <SavedPosts client:load />
+
+</Base>

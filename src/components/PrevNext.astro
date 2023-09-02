@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content"
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const index = posts.findIndex((post) => {
+  return Astro.request.url.includes(post.slug);
+});
+
+const nextPost = posts[index + 1];
+const prevPost = posts[index - 1];
+---
+
+<aside class="flex flex-col sm:flex-row gap-5 w-full">
+  {
+    prevPost && (
+      <a
+        href={`/posts/${prevPost.slug}/`}
+        class=""
+      >
+        <p class="">
+          &larr; Пред. пост
+        </p>
+        <p class="">
+          {prevPost.data.title}
+        </p>
+      </a>
+    )
+  }
+  {
+    nextPost && (
+      <a
+        href={`/posts/${nextPost.slug}/`}
+        class=""
+      >
+        <p class="">
+          След. пост &rarr;
+        </p>
+        <p class="">
+          {nextPost.data.title}
+        </p>
+      </a>
+    )
+  }
+</aside>

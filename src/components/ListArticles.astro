@@ -1,0 +1,19 @@
+---
+import Article from "./Article.astro"
+
+const { articles } = Astro.props;
+---
+
+<section>
+ <div class="grid gap-5 grid-cols-3">
+  {
+   articles.map(async (article) => {
+    return <Article data={article.data} slug={article.slug} />;
+   })
+  }
+ </div>
+ <script>
+  import favoriteLogic from "../utils/libs/favoriteLogic.js";
+  favoriteLogic();
+ </script>
+</section>

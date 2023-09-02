@@ -1,0 +1,11 @@
+---
+import ListArticles from "@components/ListArticles.astro"
+import Base from "@layouts/Base.astro"
+import { getPosts } from "@utils/post"
+const MAX_ARTICLES = 5;
+const articles = await getPosts(MAX_ARTICLES);
+---
+
+<Base title="Посты" description="">
+ <ListArticles articles={articles} />
+</Base>

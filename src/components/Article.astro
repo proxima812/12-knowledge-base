@@ -1,0 +1,23 @@
+---
+const {
+ data: { title, description, tags },
+ slug,
+} = Astro.props;
+---
+
+<article>
+ <a data-saveid={`/posts/${slug}/`} href={`/posts/${slug}/`}>slug</a>
+ <p>{description}</p>
+ <h2 aria-label={title}>{title}</h2>
+ {tags.map((tag)=>(
+  <span>{tag}</span>
+ ))}
+        <button
+        aria-label={title}
+        data-saveid={`/posts/${slug}/`}
+        aria-pressed="false"
+       >
+        {" "}
+       </button>
+</article>
+
