@@ -1,24 +1,33 @@
 ---
-import Head from "@components/Head.astro"
-import Header from "@components/partials/Header.astro"
-import Footer from "@components/partials/Footer.astro"
+import Head from "@components/Head.astro";
+import Footer from "@components/partials/Footer.astro";
+import Header from "@components/partials/Header.astro";
+import "@styles/global.css";
 const { title, description, image, articleDate } = Astro.props;
 ---
 
 <html lang="ru" class="scroll-smooth">
- <head>
-  <Head
-   title={title}
-   description={description}
-   ogImage={image}
-   articleDate={articleDate}
-  />
- </head>
- <body class="antialiased">
-  <Header />
-  <main class="max-w-5xl px-5 mx-auto">
-    <slot />
-  </main>
-  <Footer />
- </body>
+  <head>
+    <Head
+      title={title}
+      description={description}
+      ogImage={image}
+      articleDate={articleDate}
+    />
+  </head>
+  <body class="antialiased bg-[#0f1017] text-white">
+    <div class="flex flex-col gap-12">
+      <Header />
+      <main class="content max-w-5xl px-5 mx-auto">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
+    <style>
+      .content {
+        min-height: calc(100vh - 235px);
+      }
+    </style>
+  </body>
 </html>

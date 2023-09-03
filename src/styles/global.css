@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Отступ для якоря */
+:target:before {
+  content: "";
+  display: block;
+  height: 60px; /* Высота отступа, которую вы хотите добавить */
+  margin: -60px 0 0; /* Обратный отрицательный отступ, чтобы сместить якорь вверх */
+}
+
+.shagov-12 {
+  @apply bg-emerald-400/10 text-emerald-400 ring-emerald-400/20;
+}
+.tra-12 {
+  @apply bg-indigo-400/10 text-indigo-400 ring-indigo-400/20;
+}
+.principy {
+  @apply bg-orange-400/10 text-orange-400 ring-orange-400/20;
+}
+.razrabotka {
+  @apply bg-red-400/10 text-red-400 ring-red-400/20;
+}
+.opyt {
+  @apply bg-blue-400/10 text-blue-400 ring-blue-400/20;
+}
+.drugoe {
+  @apply bg-gray-400/10 text-gray-400 ring-gray-400/20;
+}

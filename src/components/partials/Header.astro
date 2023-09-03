@@ -1,10 +1,15 @@
 ---
-import SavedBtnLen from '@components/SavedBtnLen'
+import SavedBtnLen from "@components/SavedBtnLen";
+import Infinity12 from "@components/icons/Infinity12.astro";
 ---
 
-<header class="h-10 bg-yellow-200">
+<header class="py-5 bg-black/70 backdrop-blur-md">
   <div class="max-w-5xl px-5 mx-auto">
-    <a href="">logo</a>
-    <SavedBtnLen client:load />
+    <div class="flex justify-between items-center">
+      <a href="/">
+        <Infinity12 color="white" />
+      </a>
+      <SavedBtnLen client:load />
+    </div>
   </div>
 </header>

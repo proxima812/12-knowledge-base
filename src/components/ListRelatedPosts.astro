@@ -1,23 +1,25 @@
 ---
-const { posts } = Astro.props
+const { posts } = Astro.props;
 ---
 
-<section class="flex flex-col md:flex-row sm:justify-between gap-8">
-	{
-		posts.length > 0 ? (
-			posts.map((post) => {
-				return (
-					<div class='flex gap-2'>
-						<header class='flex justify-center items-center'>
-							<a class='font-medium  hover:underline' href={`/posts/${post.slug}/`}>
-								{post.data.title}
-							</a>
-						</header>
-					</div>
-				)
-			})
-		) : (
-			<span class='text-gray-500'>Нету похожих постов 😢</span>
-		)
-	}
+<section class="flex flex-col md:flex-row sm:justify-between gap-5">
+  {
+    posts.length > 0 ? (
+      posts.filter((post) => !post.data.draft).map((post) => {
+        return (
+          <article class="bg-black p-5 rounded-md flex flex-col gap-3">
+            <a
+              class="font-medium hover:underline underline-offset-4"
+              href={`/posts/${post.slug}/`}
+            >
+              {post.data.title}
+            </a>
+            <p class="text-sm text-gray-400">{post.data.description}</p>
+          </article>
+        );
+      })
+    ) : (
+      <span class="text-gray-500">Нету похожих постов 😢</span>
+    )
+  }
 </section>

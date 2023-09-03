@@ -1,2 +1,0 @@
-export { getPosts } from "./post"
-

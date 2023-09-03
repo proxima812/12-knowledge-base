@@ -1,22 +1,22 @@
 ---
-
-import Base from "@layouts/Base.astro"
-import SavedPosts from 'src/components/SavedPosts'
-
+import Base from "@layouts/Base.astro";
+import SavedPosts from "src/components/SavedPosts";
 ---
 
 <Base title="Сохраненные" description="">
-
-<button onclick="clearStorageAndReload();">Удалить все сохраненные посты</button>
+  <div class="flex justify-center">
+    <button
+      class="px-3 py-1 rounded-md bg-red-400/10 text-red-500 ring-red-400/20 ring-2"
+      onclick="clearStorageAndReload();">Удалить все сохраненные посты</button
+    >
+  </div>
 
   <script is:inline>
-  function clearStorageAndReload() {
+    function clearStorageAndReload() {
       localStorage.clear();
       location.reload();
-  }
+    }
   </script>
 
-
   <SavedPosts client:load />
-
 </Base>

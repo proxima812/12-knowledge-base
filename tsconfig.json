@@ -5,24 +5,12 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
-      "@layouts/*": [
-        "/src/layouts/*"
-      ],
-      "@assets/*": [
-        "/src/assets/*"
-      ],
-      "@components/*": [
-        "/src/components/*"
-      ],
-      "@content/*": [
-        "/src/content/*"
-      ],
-      "@styles/*": [
-        "/src/styles/*"
-      ],
-      "@utils/*": [
-        "/src/utils/*"
-      ]
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@content/*": ["src/content/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

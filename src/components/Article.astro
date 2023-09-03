@@ -1,23 +1,79 @@
 ---
 const {
- data: { title, description, tags },
- slug,
+  data: { title, description, tags },
+  slug,
 } = Astro.props;
+
+import { slugify } from "@utils/slugify";
 ---
 
-<article>
- <a data-saveid={`/posts/${slug}/`} href={`/posts/${slug}/`}>slug</a>
- <p>{description}</p>
- <h2 aria-label={title}>{title}</h2>
- {tags.map((tag)=>(
-  <span>{tag}</span>
- ))}
-        <button
-        aria-label={title}
-        data-saveid={`/posts/${slug}/`}
-        aria-pressed="false"
-       >
-        {" "}
-       </button>
+<article
+  class="pill relative flex flex-col justify-between gap-4 p-6 rounded-lg bg-black"
+>
+  <h3
+    aria-label={title}
+    class="pr-3 text-lg hover:underline underline-offset-4 font-bold leading-snug line-clamp-2"
+  >
+    <a data-saveid={`/posts/${slug}/`} href={`/posts/${slug}/`}>{title}</a>
+  </h3>
+  <p
+    class="line-clamp-3 group-hover:text-green-100 leading-relaxed text-gray-400"
+  >
+    {description}
+  </p>
+
+  <nav class="flex flex-wrap gap-3">
+    {
+      tags.map((tag) => {
+        let tagClass = tag;
+
+        if (tag === "12 шагов") {
+          tagClass = "shagov-12";
+        }
+        if (tag === "12 традиций") {
+          tagClass = "tra-12";
+        }
+        return (
+          <span
+            class={`block text-xs font-medium px-2 py-1 rounded-md ring-current ring-1 ${slugify(
+              tagClass,
+            )}`}
+          >
+            #{tag}
+          </span>
+        );
+      })
+    }
+  </nav>
+  <button
+    class="z-10 absolute top-4 right-4"
+    aria-label={title}
+    data-saveid={`/posts/${slug}/`}
+    aria-pressed="false"
+  >
+    {""}
+  </button>
 </article>
 
+<style>
+  .pill:before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      45deg,
+      rgb(223, 225, 214) 0%,
+      rgb(0, 0, 0) 100%
+    );
+    z-index: -2;
+  }
+  .pill:after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    z-index: -1;
+    border-radius: inherit;
+  }
+</style>
