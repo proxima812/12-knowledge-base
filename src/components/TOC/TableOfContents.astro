@@ -20,8 +20,13 @@ function buildToc(headings: TableOfContent[]) {
     // Change 2 to 1 if your markdown includes your <h1>
     if (heading.depth === 1 || heading.depth === 2) {
       toc.push(heading);
-    } else {
-      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+    }
+    // else {
+    //   parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+    // }
+    const parent = parentHeadings.get(heading.depth - 1);
+    if (parent && parent.subheadings) {
+      parent.subheadings.push(heading);
     }
   });
   return toc;
