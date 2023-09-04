@@ -10,6 +10,27 @@
   margin: -60px 0 0; /* Обратный отрицательный отступ, чтобы сместить якорь вверх */
 }
 
+.pill:before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      45deg,
+      rgb(197, 204, 237) 0%,
+      rgb(15, 4, 50) 100%
+    );
+    z-index: -2;
+  }
+  .pill:after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    z-index: -1;
+    border-radius: inherit;
+  }
+
 .shagov-12 {
   @apply bg-emerald-400/10 text-emerald-400 ring-emerald-400/20;
 }

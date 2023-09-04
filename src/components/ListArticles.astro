@@ -1,10 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import Article from "./Article.astro";
+import Article from "./Article.astro"
 
 const { articles } = Astro.props;
 
-import banner1 from "@assets/poster-start.png";
 ---
 
 <section>
@@ -19,8 +17,8 @@ import banner1 from "@assets/poster-start.png";
       />
     </div> -->
     {
-      articles.map(async (article) => {
-        return <Article data={article.data} slug={article.slug} />;
+      articles.map(async (article, index) => {
+        return <Article data={article.data} slug={article.slug} index={index} />;
       })
     }
 

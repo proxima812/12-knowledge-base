@@ -1,8 +1,8 @@
 ---
-import AsideNews from "@components/AsideNews.astro";
-import ListArticles from "@components/ListArticles.astro";
-import Base from "@layouts/Base.astro";
-import { getCollection } from "astro:content";
+import AsideNews from "@components/AsideNews.astro"
+import ListArticles from "@components/ListArticles.astro"
+import Base from "@layouts/Base.astro"
+import { getCollection } from "astro:content"
 
 const articles = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -22,7 +22,7 @@ const articles = (await getCollection("blog"))
         width: 100%;
         height: 100%;
         left: 0;
-        background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+        background: linear-gradient(85deg, #3245ff 0%, #7b2784 100%);
         -webkit-mask-image: radial-gradient(
           rgba(0, 0, 0, 0.45),
           transparent 70%
