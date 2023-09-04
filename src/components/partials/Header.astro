@@ -1,12 +1,12 @@
 ---
-import SavedBtnLen from "@components/SavedBtnLen"
-import Infinity12 from "@components/icons/Infinity12.astro"
+import SavedBtnLen from "@components/SavedBtnLen";
+import Infinity12 from "@components/icons/Infinity12.astro";
 ---
 
 <header class="py-5 bg-black/70 backdrop-blur-md">
   <div class="max-w-5xl px-5 mx-auto">
     <div class="flex justify-between items-center">
-      <a href="/">
+      <a href="/" data-astro-reload>
         <Infinity12 color="white" />
       </a>
       <SavedBtnLen client:load />

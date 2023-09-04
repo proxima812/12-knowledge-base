@@ -1,6 +1,6 @@
 export const settings = {
   site: {
-    url: "https://site.com/",
+    url: "https://up12.vercel.app/",
     title: "Материалы 12 шагов",
     description:
       'Материалы от "12 шагов - база знаний". Опыт, руководства, разработка.',
