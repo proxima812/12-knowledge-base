@@ -1,16 +1,16 @@
-// import { siteConfig } from "@/site-config";
-// import rss from "@astrojs/rss";
-// import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
+import { settings } from "src/config";
 
-// export async function get() {
-//  const posts = await getCollection("blog");
-//  return rss({
-//   title: siteConfig.title,
-//   description: siteConfig.description,
-//   site: import.meta.env.SITE,
-//   items: posts.map((post) => ({
-//    ...post.data,
-//    link: `post/${post.slug}/`,
-//   })),
-//  });
-// }
+export async function get() {
+  const posts = await getCollection("blog");
+  return rss({
+    title: `${settings.site.title}`,
+    description: `${settings.site.description}`,
+    site: import.meta.env.SITE,
+    items: posts.map((post) => ({
+      ...post.data,
+      link: `posts/${post.slug}/`,
+    })),
+  });
+}
