@@ -1,8 +1,7 @@
 ---
-import Article from "./Article.astro"
+import Article from "./Article.astro";
 
 const { articles } = Astro.props;
-
 ---
 
 <section>
@@ -18,7 +17,9 @@ const { articles } = Astro.props;
     </div> -->
     {
       articles.map(async (article, index) => {
-        return <Article data={article.data} slug={article.slug} index={index} />;
+        return (
+          <Article data={article.data} slug={article.slug} index={index} />
+        );
       })
     }
 

@@ -1,8 +1,8 @@
 ---
-import AsideNews from "@components/AsideNews.astro"
-import ListArticles from "@components/ListArticles.astro"
-import Base from "@layouts/Base.astro"
-import { getCollection } from "astro:content"
+import AsideNews from "@components/AsideNews.astro";
+import ListArticles from "@components/ListArticles.astro";
+import Base from "@layouts/Base.astro";
+import { getCollection } from "astro:content";
 
 const articles = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
