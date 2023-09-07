@@ -16,17 +16,23 @@ const prevPost = posts[index - 1];
 <aside class="my-12 flex flex-col sm:flex-row gap-5 w-full">
   {
     prevPost && (
-      <a href={`/posts/${prevPost.slug}/`} class="bg-black text-white p-5 rounded-md">
+      <a
+        href={`/posts/${prevPost.slug}/`}
+        class="bg-black text-white p-5 rounded-md"
+      >
         <p class="font-medium">&larr; Пред. пост</p>
-        <p class="text-xs text-slate-600">{prevPost.data.title}</p>
+        <p class="text-xs text-slate-400">{prevPost.data.title}</p>
       </a>
     )
   }
   {
     nextPost && (
-      <a href={`/posts/${nextPost.slug}/`} class="bg-black text-white p-5 rounded-md">
+      <a
+        href={`/posts/${nextPost.slug}/`}
+        class="bg-black text-white p-5 rounded-md"
+      >
         <p class="font-medium">След. пост &rarr;</p>
-        <p class="text-xs text-slate-600">{nextPost.data.title}</p>
+        <p class="text-xs text-slate-400">{nextPost.data.title}</p>
       </a>
     )
   }

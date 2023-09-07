@@ -34,7 +34,7 @@ function buildToc(headings: TableOfContent[]) {
 ---
 
 <ul
-  class="lg:block min-h-full h-screen overflow-auto sticky top-12 hidden items-start text-sm [text-wrap:balance]"
+  class="lg:flex flex-col min-h-full h-screen overflow-auto sticky top-12 hidden text-sm [text-wrap:balance]"
 >
   {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
 </ul>

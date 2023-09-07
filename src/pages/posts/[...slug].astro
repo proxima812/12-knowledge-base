@@ -1,20 +1,21 @@
 ---
+import ListRelatedPosts from "@components/ListRelatedPosts.astro";
+import PrevNext from "@components/PrevNext.astro";
+import TableOfContents from "@components/TOC/TableOfContents.astro";
+import PostLayout from "@layouts/PostLayout.astro";
 import { getPosts } from "@utils/post";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import ListRelatedPosts from "src/components/ListRelatedPosts.astro";
-import PrevNext from "src/components/PrevNext.astro";
-import TableOfContents from "src/components/TOC/TableOfContents.astro";
-import Post from "src/layouts/Post.astro";
 const posts = await getCollection("blog");
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
+
 const post = Astro.props;
 
 const getRelatedPosts = (post) => {
@@ -30,13 +31,14 @@ const relatedPosts = getRelatedPosts(post);
 const { Content, headings } = await post.render();
 ---
 
-<Post data={post.data} headings={headings}>
+<PostLayout post={post} headings={headings}>
+
   <aside class="my-12">
     <h1 class="text-4xl font-bold">{post.data.title}</h1>
     <p class="mt-3 text-gray-400">{post.data.description}</p>
   </aside>
 
-  <main class="flex gap-12 items-start">
+  <main class="flex gap-12">
     {headings && headings.length > 0 && <TableOfContents {headings} />}
     <!-- components={{ pre: Code }} -->
     <div class="prose prose-invert">
@@ -44,10 +46,14 @@ const { Content, headings } = await post.render();
     </div>
   </main>
 
-  <div class="mt-12">
-    <h4 class="my-6 text-xl font-bold">Похожие посты</h4>
-    <ListRelatedPosts posts={relatedPosts} />
-  </div>
+  {
+    relatedPosts && (
+      <div class="mt-12">
+        <h4 class="my-6 text-xl font-bold">Похожие посты</h4>
+        <ListRelatedPosts posts={relatedPosts} />
+      </div>
+    )
+  }
 
   <PrevNext />
 
@@ -62,17 +68,17 @@ const { Content, headings } = await post.render();
         );
 
         if (entry.isIntersecting) {
-          index?.classList.remove("bg-purple-400/10", "text-purple-400"); // remove bg
+          index?.classList.remove("bg-blue-400/10", "text-blue-400"); // remove bg
           index?.classList.add(
-            "bg-purple-500",
+            "bg-blue-500",
             "text-white",
             "transition-colors",
             "duration-200",
           );
         } else {
-          index?.classList.add("bg-purple-400/10", "text-purple-400"); // add bg
+          index?.classList.add("bg-blue-400/10", "text-blue-400"); // add bg
           index?.classList.remove(
-            "bg-purple-500",
+            "bg-blue-500",
             "text-white",
             "transition-colors",
           );
@@ -96,4 +102,4 @@ const { Content, headings } = await post.render();
       observer.observe(heading);
     });
   </script>
-</Post>
+</PostLayout>

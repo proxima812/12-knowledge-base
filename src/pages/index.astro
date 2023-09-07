@@ -1,7 +1,8 @@
 ---
 import AsideNews from "@components/AsideNews.astro";
 import ListArticles from "@components/ListArticles.astro";
-import Base from "@layouts/Base.astro";
+import Base from "@layouts/BaseLayout.astro";
+import SectionBlur from "@layouts/SectionBlur.astro";
 import { getCollection } from "astro:content";
 
 const articles = (await getCollection("blog"))
@@ -10,26 +11,12 @@ const articles = (await getCollection("blog"))
 ---
 
 <Base title="Посты" description="">
-  <section class="flex justify-center mb-12">
+  <SectionBlur
+    className="flex justify-center mb-12"
+    color1="#2079FF"
+    color2="#EF2AC4"
+  >
     <AsideNews />
-    <style>
-      section:before {
-        position: absolute;
-        z-index: -1;
-        content: "";
-        top: 0%;
-        bottom: 10%;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        background: linear-gradient(85deg, #3245ff 0%, #7b2784 100%);
-        -webkit-mask-image: radial-gradient(
-          rgba(0, 0, 0, 0.45),
-          transparent 70%
-        );
-        mask-image: radial-gradient(rgba(0, 0, 0, 0.45), transparent 70%);
-      }
-    </style>
-  </section>
+  </SectionBlur>
   <ListArticles articles={articles} />
 </Base>

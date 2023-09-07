@@ -1,20 +1,21 @@
 ---
-import { settings } from "src/config"
+import { settings } from "src/config";
 export interface Props {
- title: string;
- description?: string;
- ogImage?: string | undefined;
- articleDate?: string | undefined;
+  title: string;
+  description?: string;
+  ogImage?: string | undefined;
+  articleDate?: string | undefined;
 }
 
 const {
- title,
- description = settings.site.description,
- ogImage,
- articleDate,
+  title,
+  description = settings.site.description,
+  ogImage,
+  articleDate,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(ogImage ? ogImage : "/open-graph.png", Astro.url).href;
+const socialImageURL = new URL(ogImage ? ogImage : "/open-graph.png", Astro.url)
+  .href;
 
 const titleSeparator = "•";
 
@@ -40,9 +41,9 @@ const siteTitle = `${title} ${titleSeparator} ${settings.site.title}`;
 <meta property="og:image" content={socialImageURL} />
 
 <link
- rel="alternate"
- type="application/rss+xml"
- title={settings.site.title}
- href="/rss.xml"
+  rel="alternate"
+  type="application/rss+xml"
+  title={settings.site.title}
+  href="/rss.xml"
 />
 <link rel="sitemap" href="/sitemap-index.xml" />
