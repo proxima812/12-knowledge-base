@@ -6,15 +6,6 @@ const { articles } = Astro.props;
 
 <section>
   <div class="grid gap-5 md:grid-cols-2">
-    <!-- <div class="md:col-span-2">
-      <Image
-        src={banner1}
-        alt=""
-        quality={"mid"}
-        format="avif"
-        class="rounded-lg"
-      />
-    </div> -->
     {
       articles.map(async (article, index) => {
         return (

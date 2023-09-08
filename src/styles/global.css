@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.glass {
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 /* Отступ для якоря */
 :target:before {
   content: "";
@@ -11,41 +17,41 @@
 }
 
 .pill:before {
-    position: absolute;
-    inset: 0;
-    content: "";
-    margin: -1px;
-    border-radius: inherit;
-    background: linear-gradient(
-      45deg,
-      rgb(197, 204, 237) 0%,
-      rgb(15, 4, 50) 100%
-    );
-    z-index: -2;
-  }
-  .pill:after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    z-index: -1;
-    border-radius: inherit;
-  }
+  position: absolute;
+  inset: 0;
+  content: "";
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 204, 237) 0%,
+    rgb(15, 4, 50) 100%
+  );
+  z-index: -2;
+}
+.pill:after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  z-index: -1;
+  border-radius: inherit;
+}
 
 .shagov-12 {
-  @apply bg-emerald-400/10 text-emerald-400 ring-emerald-400/20;
+  @apply before:content-['📗'] bg-emerald-400/10 text-emerald-400 ring-emerald-400/60;
 }
 .tra-12 {
-  @apply bg-indigo-400/10 text-indigo-400 ring-indigo-400/20;
+  @apply before:content-['📘'] bg-indigo-400/10 text-indigo-400 ring-indigo-400/60;
 }
 .principy {
-  @apply bg-orange-400/10 text-orange-400 ring-orange-400/20;
+  @apply before:content-['📜'] bg-orange-400/10 text-orange-400 ring-orange-400/60;
 }
 .razrabotka {
-  @apply bg-red-400/10 text-red-400 ring-red-400/20;
+  @apply before:content-['💻'] bg-red-400/10 text-red-400 ring-red-400/60;
 }
 .opyt {
-  @apply bg-blue-400/10 text-blue-400 ring-blue-400/20;
+  @apply before:content-['🗃'] bg-blue-400/10 text-blue-400 ring-blue-400/60;
 }
 .drugoe {
-  @apply bg-gray-400/10 text-gray-400 ring-gray-400/20;
+  @apply before:content-['📍'] bg-gray-400/10 text-gray-400 ring-gray-400/60;
 }

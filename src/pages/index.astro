@@ -1,16 +1,23 @@
 ---
 import AsideNews from "@components/AsideNews.astro";
+import FavoriteList from "@components/FavoriteList.astro";
 import ListArticles from "@components/ListArticles.astro";
 import Base from "@layouts/BaseLayout.astro";
 import SectionBlur from "@layouts/SectionBlur.astro";
 import { getCollection } from "astro:content";
 
-const articles = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
+const allArticles = await getCollection("blog");
+
+const articlesList = allArticles
+  .filter((post) => !post.data.draft && !post.data.favorite)
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+const articlesFavorite = allArticles
+  .filter((post) => post.data.favorite)
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
-<Base title="Посты" description="">
+<Base title="Посты">
   <SectionBlur
     className="flex justify-center mb-12"
     color1="#2079FF"
@@ -18,5 +25,6 @@ const articles = (await getCollection("blog"))
   >
     <AsideNews />
   </SectionBlur>
-  <ListArticles articles={articles} />
+  <FavoriteList articles={articlesFavorite} />
+  <ListArticles articles={articlesList} />
 </Base>
