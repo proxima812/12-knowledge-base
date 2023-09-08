@@ -1,17 +1,21 @@
 ---
-import Head from "@components/Head.astro";
+import Head from "@components/Head.astro"
 const response = await fetch(
   "https://opensheet.elk.sh/1JOALLjnvKx8abLu7O1eoB6lJrMDx4xzBUY72up2UoJE/12steps",
 );
 const data = await response.json();
 
-const spheres_of_life = "font-bold m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-blue-500 ";
-const community = "m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-red-500 ";
-const community_and_abbreviation = "m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-pink-500 ";
-const object_independency = "m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-indigo-500 ";
-const decoding = "m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-purple-500 ";
-const off_site_link =
-  "m-2 rounded-md empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent px-3 py-1 bg-green-500 underline underline-offset-4";
+const default_style =
+  "leading-tight  rounded-md px-3 py-2 empty:px-0 empty:py-0 empty:m-0 empty:bg-transparent";
+
+const spheres_of_life = `font-bold  ${default_style} bg-blue-500 `;
+const community = ` ${default_style} bg-red-500 `;
+const community_and_abbreviation = ` ${default_style} bg-pink-500 `;
+const object_independency = ` ${default_style} bg-indigo-500 `;
+const decoding = ` ${default_style} bg-purple-500 `;
+const off_site_link = ` ${default_style} bg-green-500 underline underline-offset-4`;
+
+const h3 = 'text-sm font-normal text-black inline p-1 rounded-md'
 ---
 
 <html lang="ru" class="scroll-smooth">
@@ -20,12 +24,13 @@ const off_site_link =
   </head>
   <body class="antialiased bg-[#0f1017] text-white">
     <section class="p-5 max-w-full">
+
+      <div
+        aria-label="Столбцы"
+        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
+      >
       {
         data.map((item) => (
-          <div
-            aria-label="Столбцы"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6"
-          >
             <span class={spheres_of_life}>
               {item.spheres_of_life && item.spheres_of_life}
             </span>
@@ -41,9 +46,9 @@ const off_site_link =
             <a href={item.off_site_link} class={off_site_link}>
               {item.off_site_link && item.off_site_link}
             </a>
+            ))
+          }
           </div>
-        ))
-      }
     </section>
   </body>
 </html>
