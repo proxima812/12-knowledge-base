@@ -1,0 +1,37 @@
+---
+
+---
+
+<div
+  id="toUp"
+  class="toUp bg-black/70 backdrop-blur-md grid place-items-center rounded-md w-10 h-10 opacity-0 right-5 bottom-5 cursor-pointer fixed"
+>
+  <span class="text-xl">&#8593;</span>
+</div>
+
+<style>
+  .toUp {
+    z-index: -1;
+    transition:
+      opacity 0.2s linear,
+      display 0.2s linear;
+  }
+</style>
+
+<script is:inline>
+  const backToTopButton = document.getElementById("toUp");
+
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 100) {
+      backToTopButton.style.opacity = "1";
+      backToTopButton.style.zIndex = "9999";
+    } else {
+      backToTopButton.style.opacity = "0";
+      backToTopButton.style.zIndex = "-1";
+    }
+  });
+
+  backToTopButton.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
