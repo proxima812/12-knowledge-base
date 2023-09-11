@@ -40,6 +40,7 @@
 .ql-editor {
   @apply p-6 !important;
 }
+
 .ql-editor p,
 .ql-editor ol,
 .ql-editor ul,
