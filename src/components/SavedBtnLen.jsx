@@ -52,11 +52,8 @@ function SavedPostsLink() {
   }, []);
 
   return (
-    <a
-      href="/saved"
-      className="px-3 py-1 rounded-md ring-white/20 ring-1 bg-[#0f1017] flex items-center gap-2"
-    >
-      <span className="text-xl">📁</span>{" "}
+    <a href="/saved" className="jbtn">
+      <span>📁</span>{" "}
       {savedCount && <b>{savedCount > 0 && `(${savedCount})`}</b>}
     </a>
   );

@@ -1,15 +1,19 @@
 ---
+import NavBar from "@components/NavBar.astro";
 import SavedBtnLen from "@components/SavedBtnLen";
 import Infinity12 from "@components/icons/Infinity12.astro";
 ---
 
 <header class="py-5 bg-black/70 backdrop-blur-md">
   <div class="max-w-5xl px-5 mx-auto">
-    <div class="flex justify-between items-center">
+    <div class="flex flex-wrap gap-5 justify-center md:justify-between items-center">
       <a href="/" data-astro-reload>
         <Infinity12 color="white" />
       </a>
-      <SavedBtnLen client:load />
+      <div class="flex flex-wrap gap-3 items-center">
+        <SavedBtnLen client:load />
+        <NavBar />
+      </div>
     </div>
   </div>
 </header>

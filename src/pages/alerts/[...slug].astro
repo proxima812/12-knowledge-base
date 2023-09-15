@@ -1,13 +1,16 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"
-import SectionBlur from '@layouts/SectionBlur.astro'
-import { settings } from 'src/config'
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionBlur from "@layouts/SectionBlur.astro";
+import { settings } from "src/config";
 export async function getStaticPaths() {
-  const response = await fetch(import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`, {
-    headers: {
-      apikey: import.meta.env.KEY_ANON,
+  const response = await fetch(
+    import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`,
+    {
+      headers: {
+        apikey: import.meta.env.KEY_ANON,
+      },
     },
-  });
+  );
   const items = await response.json();
 
   return items.map((item) => {
@@ -23,10 +26,11 @@ const { item } = Astro.props;
 ---
 
 <BaseLayout title={item.name}>
-<SectionBlur color1='#364D9E' color2='#CA49AE'>
+  <SectionBlur color1="#364D9E" color2="#CA49AE">
     <h1 class="text-xl font-bold">{item.name}</h1>
     <div class="prose prose-invert">
       <p set:html={item.description} />
     </div>
-</SectionBlur>
+  </SectionBlur>
+  <script src="/src/utils/js/deleteP.js"></script>
 </BaseLayout>

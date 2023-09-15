@@ -1,10 +1,11 @@
 ---
 export interface Props {
   className?: string;
+  w_container?: string;
 }
-const { className } = Astro.props;
+const { className, w_container } = Astro.props;
 ---
 
-<main class=`${className} w-full max-w-5xl px-5 mx-auto`>
+<main class=`${className} w-full ${w_container ?? 'max-w-5xl'} px-5 mx-auto`>
   <slot />
 </main>

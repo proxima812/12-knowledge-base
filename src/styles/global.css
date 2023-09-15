@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.glass {
-  backdrop-filter: blur(15px) saturate(150%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.05);
+@layer components {
+  .jbtn {
+    @apply px-3 py-1 rounded-md ring-white/20 ring-1 bg-[#0f1017] flex items-center gap-2 transition-colors ease-linear hover:bg-black/40;
+  }
+  .glass {
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  .jh2 {
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold antialiased;
+  }
+  .jh3 {
+    @apply text-lg md:text-xl lg:text-2xl font-medium antialiased;
+  }
 }
 
 /* Отступ для якоря */

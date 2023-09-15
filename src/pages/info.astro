@@ -1,15 +1,18 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"
-import SectionBlur from "@layouts/SectionBlur.astro"
-import { settings } from 'src/config'
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SectionBlur from "@layouts/SectionBlur.astro";
+import { settings } from "src/config";
 
 export const prerender = false;
 
-const response = await fetch(import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`, {
-  headers: {
-    apikey: import.meta.env.KEY_ANON,
+const response = await fetch(
+  import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`,
+  {
+    headers: {
+      apikey: import.meta.env.KEY_ANON,
+    },
   },
-});
+);
 const items = await response.json();
 
 interface Props {
@@ -41,26 +44,6 @@ interface Props {
           ))
       }
     </div>
-    <script>
-      // Получаем все теги <p> на странице
-      const paragraphs = document.getElementsByTagName("p");
-
-      // Проходимся по всем тегам <p>
-      for (let i = paragraphs.length - 1; i >= 0; i--) {
-        const paragraph = paragraphs[i];
-
-        // Проверяем, если тег <p> пустой
-        if (
-          paragraph.innerHTML.trim() === "" ||
-          paragraph.innerHTML.trim() === "<br>"
-        ) {
-          // Удаляем пустой тег <p>
-          paragraph.parentNode.removeChild(paragraph);
-        } else if (paragraph.querySelector("br")) {
-          // Если в теге <p> есть <br>, то удаляем его
-          paragraph.removeChild(paragraph.querySelector("br"));
-        }
-      }
-    </script>
+    <script src="/src/utils/js/deleteP.js"></script>
   </SectionBlur>
 </BaseLayout>
