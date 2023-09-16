@@ -15,13 +15,12 @@ const articlesFavorite = allArticles
   .filter((post) => post.data.favorite)
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
-const dataImages = await Astro.glob("../assets/gallery/*.jpg").then((files) => {
-  return files.map((file) => file.default);
-});
 ---
 
 <Base title="Посты" color1="#2079FF" color2="#EF2AC4">
-  <div class="flex justify-center mb-12"><AsideNews /></div>
+  <div class="flex justify-center mb-12">
+    <AsideNews />
+  </div>
   <FavoriteList articles={articlesFavorite} />
   <ListArticles articles={articlesList} />
 </Base>

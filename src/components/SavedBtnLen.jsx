@@ -54,7 +54,7 @@ function SavedPostsLink() {
   return (
     <a href="/saved" className="jbtn">
       <span>📁</span>{" "}
-      {savedCount && <b>{savedCount > 0 && `(${savedCount})`}</b>}
+      {savedCount && <>{savedCount > 0 && `(${savedCount})`}</>}
     </a>
   );
 }

@@ -1,7 +1,7 @@
 import { isPostSaved, removePost, savePost } from "./logic";
 
 export const favoriteLogic = () => {
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const saveButtons = document.querySelectorAll("button[data-saveid]");
     const saveIcon = `<svg width="13" height="21" viewBox="0 0 13 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.8332 0.348087L10.8389 0.850819L10.9098 0.850008C11.2681 0.851182 11.5939 0.977207 11.8204 1.17494C12.0433 1.36943 12.1463 1.60898 12.15 1.83348V19.1721L7.04825 14.8728L6.50054 14.4112L5.9528 14.8727L0.85 19.1723V1.91959L0.850939 1.83653C0.853487 1.61107 0.956377 1.37 1.18049 1.1745C1.40699 0.976922 1.73263 0.851049 2.09075 0.850007L2.15757 0.850813L2.15757 0.850875H2.16783H10.8292H10.8332V0.348087Z" stroke="white" stroke-width="1.7"/>
