@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
-import ReactQuill from "react-quill"
-import "react-quill/dist/quill.snow.css"
-import { supabase } from "../supabaseClient.js"
-import { forbiddenWords } from "./react-quill/forbiddenWords.js"
-import { quillModules } from "./react-quill/quillModules.js"
+import { sanitizeQuillOutput } from "@utils/sanitizeQuillOutput.js";
+import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { supabase } from "../supabaseClient.js";
+import { forbiddenWords } from "./react-quill/forbiddenWords.js";
+import { quillModules } from "./react-quill/quillModules.js";
 
 function ListBlocks({ user }) {
   const [name, setName] = useState("");
@@ -74,7 +75,7 @@ function ListBlocks({ user }) {
         })
         .single();
 
-      alert('Запись добавлена! Она на странцие "Информации"');
+      alert('Запись добавлена! Перейдите на страницу "Записи"');
 
       if (error) throw error;
       window.location.reload();
@@ -85,11 +86,11 @@ function ListBlocks({ user }) {
 
   return (
     <>
-      <div className="mt-6 flex flex-col gap-12">
+      <div className="mt-6 flex flex-col gap-6">
         <input
           className=" w-full glass text-lg px-3 py-2 self-start rounded-md font-medium"
           type="text"
-          placeholder="Заголовок"
+          placeholder="Мой шикарный Заголовок"
           id="name"
           required
           onChange={(e) => setName(e.target.value)}
@@ -101,13 +102,13 @@ function ListBlocks({ user }) {
             theme="snow"
             required
             modules={quillModules}
-            value={description}
+            value={sanitizeQuillOutput(description)}
             onChange={setDescription}
           />
         </div>
 
         <button
-          className="glass px-3 py-2 self-start rounded-md font-medium"
+          className="jbtn"
           onClick={() => createProduct()}
         >
           Добавить запись 🎉

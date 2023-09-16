@@ -1,0 +1,13 @@
+---
+import { sanitizeQuillOutput } from "@utils/sanitizeQuillOutput";
+const { item } = Astro.props;
+---
+
+<article class="p-5 rounded-lg glass flex flex-col gap-5">
+  <a href={`/alerts/${item.id}`} class="hover:underline underline-offset-4">
+    <h3 class="text-xl font-bold">{item.name}</h3>
+  </a>
+  <div class="prose prose-invert line-clamp-5">
+    <Fragment set:html={sanitizeQuillOutput(item.description)} />
+  </div>
+</article>

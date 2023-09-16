@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
-import SectionBlur from "./SectionBlur.astro";
 
 const { post, image, articleDate } = Astro.props;
 
@@ -13,12 +12,12 @@ interface Props {
 ---
 
 <BaseLayout
+  color1="#2C2AAA"
+  color2="#5E0A4B"
   title={post.data.title}
   description={post.data.description}
   ogImage={image}
   articleDate={articleDate}
 >
-  <SectionBlur color1="#2C2AAA" color2="#5E0A4B">
-    <slot />
-  </SectionBlur>
+  <slot />
 </BaseLayout>

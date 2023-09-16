@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionBlur from "@layouts/SectionBlur.astro";
 import { settings } from "src/config";
 
-export const prerender = false;
+import PostAlert from "@components/PostAlert.astro";
+
+export const prerender = true;
 
 const response = await fetch(
   import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`,
@@ -22,28 +23,12 @@ interface Props {
 }
 ---
 
-<BaseLayout title="Записи">
-  <SectionBlur color1="#171949" color2="#49CA9C">
-    <div class="grid items-start md:grid-cols-2 gap-5">
-      {
-        items
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-          .map((item) => (
-            <article class="p-5 rounded-lg glass flex flex-col gap-5">
-              <h3 class="text-xl font-bold">{item.name}</h3>
-              <div class="prose prose-invert line-clamp-5">
-                <Fragment set:html={item.description} />
-              </div>
-              <a
-                href={`/alerts/${item.id}`}
-                class="px-3 py-1 bg-white text-black font-semibold self-start rounded-md"
-              >
-                Смотреть
-              </a>
-            </article>
-          ))
-      }
-    </div>
-    <script src="/src/utils/js/deleteP.js"></script>
-  </SectionBlur>
+<BaseLayout title="Записи" color1="#171949" color2="#49CA9C">
+  <div class="grid items-start md:grid-cols-2 gap-5">
+    {
+      items
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .map((item) => <PostAlert item={item} />)
+    }
+  </div>
 </BaseLayout>

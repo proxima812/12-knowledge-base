@@ -1,12 +1,22 @@
 ---
+import "@styles/base.css";
 import Head from "@components/Head.astro";
 import ToUp from "@components/ToUp.astro";
 import Footer from "@components/partials/Footer.astro";
 import Header from "@components/partials/Header.astro";
-import "@styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 import Container from "./Container.astro";
-const { title, description, image, articleDate, w_container } = Astro.props;
+import SectionBlur from "./SectionBlur.astro";
+const {
+  title,
+  description,
+  className,
+  image,
+  articleDate,
+  w_container,
+  color1,
+  color2,
+} = Astro.props;
 ---
 
 <html lang="ru" class="scroll-smooth">
@@ -20,19 +30,15 @@ const { title, description, image, articleDate, w_container } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="antialiased bg-[#0f1017] text-white">
-    <ToUp />
-    <div class="flex flex-col gap-12">
+    <main class="flex flex-col gap-12">
       <Header />
       <Container w_container={w_container} className="content">
-        <slot />
+        <SectionBlur className={className} color1={color1} color2={color2}>
+          <slot />
+        </SectionBlur>
       </Container>
       <Footer />
-
-      <style is:global>
-        .content {
-          min-height: calc(100vh - 235px);
-        }
-      </style>
-    </div>
+    </main>
+    <ToUp />
   </body>
 </html>

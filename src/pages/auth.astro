@@ -1,11 +1,12 @@
 ---
-import MySession from "@components/db_components/MySession"
-import BaseLayout from "@layouts/BaseLayout.astro"
-import SectionBlur from "@layouts/SectionBlur.astro"
+import MySession from "@components/db_components/MySession";
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Панель управления записями">
-  <SectionBlur color1="#2a122a" color2="#ffffff24">
-    <MySession client:only="react" />
-  </SectionBlur>
+<BaseLayout
+  color1="2a122a"
+  color2="ffffff24"
+  title="Панель управления записями"
+>
+  <MySession client:only="react" />
 </BaseLayout>

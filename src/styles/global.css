@@ -4,7 +4,7 @@
 
 @layer components {
   .jbtn {
-    @apply px-3 py-1 rounded-md ring-white/20 ring-1 bg-[#0f1017] flex items-center gap-2 transition-colors ease-linear hover:bg-black/40;
+    @apply px-3 py-1 rounded-md ring-white/20 ring-1 bg-[#0f1017] self-start flex items-center gap-2 transition-colors ease-linear hover:bg-black/40;
   }
   .glass {
     backdrop-filter: blur(15px) saturate(150%);
@@ -46,48 +46,4 @@
   content: "";
   z-index: -1;
   border-radius: inherit;
-}
-
-.ql-editor {
-  @apply p-6 !important;
-}
-
-.ql-editor p,
-.ql-editor ol,
-.ql-editor ul,
-.ql-editor pre,
-.ql-editor blockquote,
-.ql-editor h1,
-.ql-editor h2,
-.ql-editor h3,
-.ql-editor h4,
-.ql-editor h5,
-.ql-editor h6,
-.ql-editor.ql-blank:before {
-  @apply text-base !important;
-}
-.ql-snow .ql-stroke {
-  @apply stroke-white !important;
-}
-.ql-editor.ql-blank:before {
-  @apply text-white text-gray-300 right-6 left-6 !important;
-}
-
-.shagov-12 {
-  @apply before:content-['📗'] bg-emerald-400/10 text-emerald-400 ring-emerald-400/60;
-}
-.tra-12 {
-  @apply before:content-['📘'] bg-indigo-400/10 text-indigo-400 ring-indigo-400/60;
-}
-.principy {
-  @apply before:content-['📜'] bg-orange-400/10 text-orange-400 ring-orange-400/60;
-}
-.razrabotka {
-  @apply before:content-['💻'] bg-red-400/10 text-red-400 ring-red-400/60;
-}
-.opyt {
-  @apply before:content-['🗃'] bg-blue-400/10 text-blue-400 ring-blue-400/60;
-}
-.drugoe {
-  @apply before:content-['📍'] bg-gray-400/10 text-gray-400 ring-gray-400/60;
 }

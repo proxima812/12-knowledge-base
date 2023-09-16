@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import SectionBlur from "@layouts/SectionBlur.astro";
+import { sanitizeQuillOutput } from "@utils/sanitizeQuillOutput";
 import { settings } from "src/config";
 export async function getStaticPaths() {
   const response = await fetch(
@@ -25,12 +25,12 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 ---
 
-<BaseLayout title={item.name}>
-  <SectionBlur color1="#364D9E" color2="#CA49AE">
-    <h1 class="text-xl font-bold">{item.name}</h1>
+<BaseLayout title={item.name} color1="#364D9E" color2="CA49AE">
+  <h1 class="text-2xl font-bold">{item.name}</h1>
+  <div class="flex gap-12 items-start">
     <div class="prose prose-invert">
-      <p set:html={item.description} />
+      <p set:html={sanitizeQuillOutput(item.description)} />
     </div>
-  </SectionBlur>
-  <script src="/src/utils/js/deleteP.js"></script>
+    <aside></aside>
+  </div>
 </BaseLayout>

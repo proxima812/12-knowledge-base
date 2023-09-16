@@ -3,7 +3,6 @@ import AsideNews from "@components/AsideNews.astro";
 import FavoriteList from "@components/FavoriteList.astro";
 import ListArticles from "@components/ListArticles.astro";
 import Base from "@layouts/BaseLayout.astro";
-import SectionBlur from "@layouts/SectionBlur.astro";
 import { getCollection } from "astro:content";
 
 const allArticles = await getCollection("blog");
@@ -21,15 +20,8 @@ const dataImages = await Astro.glob("../assets/gallery/*.jpg").then((files) => {
 });
 ---
 
-<Base title="Посты">
-  <SectionBlur
-    className="flex justify-center mb-12"
-    color1="#2079FF"
-    color2="#EF2AC4"
-  >
-    <AsideNews />
-  </SectionBlur>
-
+<Base title="Посты" color1="#2079FF" color2="#EF2AC4">
+  <div class="flex justify-center mb-12"><AsideNews /></div>
   <FavoriteList articles={articlesFavorite} />
   <ListArticles articles={articlesList} />
 </Base>

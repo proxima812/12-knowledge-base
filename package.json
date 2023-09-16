@@ -15,6 +15,7 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^5.0.0",
     "@supabase/auth-helpers-react": "^0.4.2",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
@@ -26,7 +27,7 @@
     "supabase": "^1.93.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",

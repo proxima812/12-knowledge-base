@@ -57,8 +57,8 @@ function Auth() {
       ) : (
         <>
           <div className="flex flex-wrap justify-between gap-5">
-            <div>{user.email}</div>
-            <button onClick={() => signOut()}>Выйти</button>
+            <div className='jbtn'>{user.email}</div>
+            <button className='jbtn' onClick={() => signOut()}>Выйти</button>
           </div>
           <ListBlocks user={user} />
         </>

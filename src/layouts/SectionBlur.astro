@@ -1,20 +1,20 @@
 ---
 export interface Props {
   className?: string;
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
 }
-const { className, color1, color2 } = Astro.props;
+const { className, color1 = "#333", color2 = "#444" } = Astro.props;
 ---
 
-<section class={className}>
+<div class={` w-auto ${className}`}>
   <slot />
   <style scoped define:vars={{ color1, color2 }}>
     :root {
       --color1: color1;
       --color1: color1;
     }
-    section:before {
+    div:before {
       position: absolute;
       z-index: -1;
       content: "";
@@ -28,4 +28,4 @@ const { className, color1, color2 } = Astro.props;
       mask-image: radial-gradient(rgba(0, 0, 0, 0.45), transparent 70%);
     }
   </style>
-</section>
+</div>

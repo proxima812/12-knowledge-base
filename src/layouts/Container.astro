@@ -6,6 +6,12 @@ export interface Props {
 const { className, w_container } = Astro.props;
 ---
 
-<main class=`${className} w-full ${w_container ?? 'max-w-5xl'} px-5 mx-auto`>
+<div class=`${className} w-full ${w_container ?? 'max-w-5xl'} px-5 mx-auto`>
   <slot />
-</main>
+</div>
+
+<style>
+  .content {
+    min-height: calc(100vh - 235px);
+  }
+</style>
