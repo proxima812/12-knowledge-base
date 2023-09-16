@@ -26,5 +26,5 @@ export default defineConfig({
     }),
   ],
   adapter: vercel(),
-  output: "hybrid",
+  output: "server",
 });
