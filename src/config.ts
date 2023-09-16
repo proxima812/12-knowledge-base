@@ -6,7 +6,7 @@ export const settings = {
       'Материалы от "12 шагов - база знаний". Опыт, руководства, разработка.',
     ogImage: "",
     author: "@all_12steps",
-    api_item: 'items12',
+    api_item: "items12",
   },
   seo: {},
 };
