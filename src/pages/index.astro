@@ -14,7 +14,6 @@ const articlesList = allArticles
 const articlesFavorite = allArticles
   .filter((post) => post.data.favorite)
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
-
 ---
 
 <Base title="Посты" color1="#2079FF" color2="#EF2AC4">

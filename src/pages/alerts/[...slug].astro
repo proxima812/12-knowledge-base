@@ -2,6 +2,8 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { sanitizeQuillOutput } from "@utils/sanitizeQuillOutput";
 import { settings } from "src/config";
+
+export const prerender = true;
 export async function getStaticPaths() {
   const response = await fetch(
     import.meta.env.KEY + `/rest/v1/${settings.site.api_item}`,

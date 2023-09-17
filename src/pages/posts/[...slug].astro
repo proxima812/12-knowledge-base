@@ -6,6 +6,9 @@ import PostLayout from "@layouts/PostLayout.astro";
 import { getPosts } from "@utils/post";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+
+
+export const prerender = true;
 const posts = await getCollection("blog");
 
 export async function getStaticPaths() {
