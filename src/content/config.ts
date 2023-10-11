@@ -19,7 +19,7 @@ const blog = defineCollection({
 
 const tags = defineCollection({
   schema: z.object({
-    name: z.string(),
+    name: z.string().optional(),
   }),
 })
 
