@@ -1,0 +1,10 @@
+---
+export interface Props {
+  gap: string;
+}
+const { gap } = Astro.props;
+---
+
+<div class={`flex flex-col gap-${gap}`}>
+  <slot />
+</div>

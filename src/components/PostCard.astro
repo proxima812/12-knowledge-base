@@ -1,0 +1,58 @@
+---
+import { slugify } from "@utils/slugify";
+import { Image } from "astro:assets";
+const {
+  data: { title, description, tags, image },
+  slug,
+} = Astro.props;
+---
+
+<a href={`/posts/${slug}`}>
+  <article class="relative">
+    {
+      image ? (
+        <Image
+          class="rounded-xl object-cover min-h-[200px]"
+          src={image}
+          width={720}
+          height={320}
+          format="avif"
+          quality={"low"}
+          alt={title}
+        />
+      ) : (
+        <div class="w-full h-[200px] bg-gradient-to-br from-slate-800 to-gray-700 rounded-xl" />
+      )
+    }
+    <div
+      class="absolute w-full bottom-0 p-4 rounded-xl backdrop-blur-2xl backdrop-brightness-50 bg-black/10"
+    >
+      <h1 class="text-lg text-white line-clamp-3 leading-tight font-medium">
+        {title}
+      </h1>
+      <nav class="pt-2.5 flex flex-wrap gap-3">
+        {
+          tags.map((tag) => {
+            let tagClass = tag;
+
+            if (tag === "12 шагов") {
+              tagClass = "shagov-12";
+            }
+            if (tag === "12 традиций") {
+              tagClass = "tra-12";
+            }
+            return (
+              <span
+                class={`before:absolute before:left-2 relative pl-6 block text-xs font-medium px-2 py-1 rounded-md ring-current ring-1 ${slugify(
+                  tagClass,
+                )}`}
+              >
+                {tag}
+              </span>
+            );
+          })
+        }
+      </nav>
+    </div>
+  </article>
+</a>

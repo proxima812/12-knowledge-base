@@ -1,0 +1,10 @@
+---
+import TGsmall from "./icons/TGsmall.astro";
+const { link, name } = Astro.props;
+---
+
+<a
+  href={link}
+  class="flex items-center gap-1 text-sky-500 bg-sky-50 hover:bg-sky-100 py-1 px-2 rounded-md"
+  ><TGsmall />{name}</a
+>

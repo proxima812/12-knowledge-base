@@ -1,19 +1,20 @@
 ---
-import NavBar from "@components/NavBar.astro";
-import SavedBtnLen from "@components/SavedBtnLen";
+import Nav from "@components/Nav.astro";
 import Infinity12 from "@components/icons/Infinity12.astro";
+
+const { max_w } = Astro.props;
+const accent = "black";
 ---
 
-<header class="py-5 bg-black/70 backdrop-blur-md">
-  <div class="max-w-5xl px-5 mx-auto">
-    <div class="flex flex-wrap gap-5 justify-center md:justify-between items-center">
+<header class="bg-white py-5">
+  <div class={`${max_w} container px-5 mx-auto`}>
+    <div
+      class="flex flex-wrap gap-6 justify-center md:justify-between items-center"
+    >
       <a href="/">
-        <Infinity12 color="white" />
+        <Infinity12 color={accent} />
       </a>
-      <div class="flex flex-wrap gap-3 items-center">
-        <SavedBtnLen client:load />
-        <NavBar />
-      </div>
+      <Nav />
     </div>
   </div>
 </header>

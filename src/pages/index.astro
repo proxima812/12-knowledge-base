@@ -1,25 +1,13 @@
 ---
-import AsideNews from "@components/AsideNews.astro";
-import FavoriteList from "@components/FavoriteList.astro";
-import ListArticles from "@components/ListArticles.astro";
+import ListPosts from "@components/ListPosts.astro";
+import PageWrapper from "@components/partials/PageWrapper.astro";
 import Base from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-
-const allArticles = await getCollection("blog");
-
-const articlesList = allArticles
-  .filter((post) => !post.data.draft && !post.data.favorite)
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
-
-const articlesFavorite = allArticles
-  .filter((post) => post.data.favorite)
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
-<Base title="Посты" color1="#2079FF" color2="#EF2AC4">
-  <div class="flex justify-center mb-12">
-    <AsideNews />
-  </div>
-  <FavoriteList articles={articlesFavorite} />
-  <ListArticles articles={articlesList} />
+<Base title="Посты" max_w="max-w-6xl">
+  <PageWrapper gap="8">
+    <!-- <Heading /> -->
+    <!-- <Aside /> -->
+    <ListPosts />
+  </PageWrapper>
 </Base>

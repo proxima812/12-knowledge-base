@@ -23,7 +23,6 @@
   @apply text-white text-gray-300 right-6 left-6 !important;
 }
 
-
 .ql-toolbar.ql-snow {
   border: none;
   border-bottom: 1px solid theme("colors.gray.500");
@@ -97,7 +96,6 @@
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
   @apply fill-purple-400;
 }
-
 .ql-snow.ql-toolbar button:hover .ql-stroke,
 .ql-snow .ql-toolbar button:hover .ql-stroke,
 .ql-snow.ql-toolbar button:focus .ql-stroke,

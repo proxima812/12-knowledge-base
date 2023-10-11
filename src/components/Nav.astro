@@ -1,0 +1,24 @@
+---
+import TGlink from "./TGlink.astro";
+import Search from "./icons/Search.astro";
+import User from "./icons/User.astro";
+
+const accent = "black";
+---
+
+<nav class="flex flex-wrap justify-center gap-3 items-center">
+  <User
+    color={accent}
+    name="KeyStatic"
+    className="bounceUp"
+    link="/keystatic"
+    target="blank"
+  />
+  <Search
+    color={accent}
+    name="Найти пост"
+    className="bounceUp"
+    link="/search"
+  />
+  <TGlink link="https://t.me/fb_steps_bot" name="fb_steps_bot" />
+</nav>

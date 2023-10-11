@@ -1,0 +1,18 @@
+---
+import Search from "@components/SearchListPosts";
+import PageWrapper from "@components/partials/PageWrapper.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getSinglePage } from "@utils/contentParser";
+const posts = await getSinglePage("blog");
+
+const searchList = posts.map((post) => ({
+  slug: post.slug,
+  data: post.data,
+}));
+---
+
+<BaseLayout title="" description="">
+  <PageWrapper gap="8">
+    <Search client:load searchList={searchList} />
+  </PageWrapper>
+</BaseLayout>

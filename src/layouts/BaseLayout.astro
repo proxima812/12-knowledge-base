@@ -1,25 +1,13 @@
 ---
-import "@styles/base.css";
 import Head from "@components/Head.astro";
 import ToUp from "@components/ToUp.astro";
-import Footer from "@components/partials/Footer.astro";
-import Header from "@components/partials/Header.astro";
+import Wrapper from "@components/partials/MainWrapper.astro";
+import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
-import Container from "./Container.astro";
-import SectionBlur from "./SectionBlur.astro";
-const {
-  title,
-  description,
-  className,
-  image,
-  articleDate,
-  w_container,
-  color1,
-  color2,
-} = Astro.props;
+const { title, description, image, articleDate, max_w } = Astro.props;
 ---
 
-<html lang="ru" class="scroll-smooth">
+<html lang="ru" class="scroll-smooth bg-white">
   <head>
     <Head
       title={title}
@@ -27,18 +15,12 @@ const {
       ogImage={image}
       articleDate={articleDate}
     />
-    <ViewTransitions fallback="swap"/>
+    <ViewTransitions fallback="swap" />
   </head>
-  <body class="antialiased bg-[#0f1017] text-white">
-    <main class="flex flex-col gap-12">
-      <Header />
-      <Container w_container={w_container} className="content">
-        <SectionBlur className={className} color1={color1} color2={color2}>
-          <slot />
-        </SectionBlur>
-      </Container>
-      <Footer />
-    </main>
+  <body>
+    <Wrapper max_w={max_w}>
+      <slot />
+    </Wrapper>
     <ToUp />
   </body>
 </html>

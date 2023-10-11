@@ -1,12 +1,11 @@
 ---
-import ListRelatedPosts from "@components/ListRelatedPosts.astro";
-import PrevNext from "@components/PrevNext.astro";
-import TableOfContents from "@components/TOC/TableOfContents.astro";
-import PostLayout from "@layouts/PostLayout.astro";
+import TableOfContents from "@components/_toc/TableOfContents.astro";
+import PageWrapper from "@components/partials/PageWrapper.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getPosts } from "@utils/post";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
+import Socials from "@components/Socials.astro";
 
 export const prerender = true;
 const posts = await getCollection("blog");
@@ -34,34 +33,55 @@ const relatedPosts = getRelatedPosts(post);
 const { Content, headings } = await post.render();
 ---
 
-<PostLayout post={post} headings={headings}>
-  {
-    post.data.image && (
-      <Image
-        class="rounded-md cover"
-        width={1200}
-        height={360}
-        src={post.data.image}
-        alt={"Изображнение к посту: " + post.data.title}
-        format={"avif"}
-        quality={"mid"}
-      />
-    )
-  }
-  <aside class="my-12">
-    <h1 class="text-4xl font-bold">{post.data.title}</h1>
-    <p class="mt-3 text-gray-400">{post.data.description}</p>
-  </aside>
-
-  <main class="flex gap-12">
-    {headings && headings.length > 0 && <TableOfContents {headings} />}
-    <!-- components={{ pre: Code }} -->
-    <div class="prose prose-invert">
-      <Content />
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogImage={post.data.ogImage}
+  articleDate
+  max_w="max-w-6xl"
+>
+  <PageWrapper gap="8">
+    <div
+      class="absolute -z-10 top-[75px] inset-0 bg-gradient-to-b from-gray-200/60 to-white/10 h-96"
+    >
     </div>
-  </main>
+    <!-- {
+      post.data.image && (
+        <Image
+          class="rounded-md cover"
+          width={1200}
+          height={360}
+          src={post.data.image}
+          alt={"Изображнение к посту: " + post.data.title}
+          format={"avif"}
+          quality={"mid"}
+        />
+      )
+    } -->
 
-  {
+    <div class="flex items-center justify-between gap-5 flex-wrap">
+      <a href="/" class="px-3 py-2 rounded-lg bg-white font-medium">Вернуться</a
+      >
+      <Socials />
+    </div>
+
+    <div>
+      <h1 class="text-4xl font-bold">{post.data.title}</h1>
+      <p class="mt-3 text-gray-400">{post.data.description}</p>
+    </div>
+
+    <main class="flex items-start gap-12">
+      <div class="prose md:prose-md lg:prose-lg max-w-none">
+        <Content />
+      </div>
+      <aside class="sticky top-5 shrink-0 max-w-[290px]">
+        {headings && headings.length > 0 && <TableOfContents {headings} />}
+      </aside>
+    </main>
+  </PageWrapper>
+
+  <!-- components={{ pre: Code }} ----  <Content /> -->
+  <!-- {
     relatedPosts && (
       <div class="mt-12">
         <h4 class="my-6 text-xl font-bold">Похожие посты</h4>
@@ -69,8 +89,7 @@ const { Content, headings } = await post.render();
       </div>
     )
   }
-
-  <PrevNext />
+  <PrevNext /> -->
 
   <script>
     function handleIntersection(
@@ -117,4 +136,4 @@ const { Content, headings } = await post.render();
       observer.observe(heading);
     });
   </script>
-</PostLayout>
+</BaseLayout>

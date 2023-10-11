@@ -1,0 +1,14 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
+
+const list = await getCollection("blog");
+
+const posts = list
+  .filter((post) => !post.data.draft && !post.data.favorite)
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+---
+
+<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  {posts.map((post) => <PostCard data={post.data} slug={post.slug} />)}
+</div>
