@@ -9,6 +9,28 @@ const posts = list
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
-<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-  {posts.map((post) => <PostCard data={post.data} slug={post.slug} />)}
+<div
+  class="grid grid-flow-row-dense gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+>
+  {
+    posts.map((post, index) => (
+      <PostCard index={index} data={post.data} slug={post.slug} />
+    ))
+  }
 </div>
+
+<script>
+  // motion.dev
+  import { animate, spring, stagger } from "motion";
+
+  animate(
+    ".animatePost",
+    { opacity: [0, 100], y: ["5%", "0%"] },
+    { easing: spring({ velocity: 200 }), duration: 1, delay: stagger(0.08) },
+  );
+  animate(
+    ".animateImage",
+    { height: ["0px", "210px"] },
+    { easing: spring({ velocity: 200 }), duration: 1 },
+  );
+</script>

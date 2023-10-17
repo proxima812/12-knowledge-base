@@ -2,22 +2,27 @@
 import { slugify } from "@utils/slugify";
 import { Image } from "astro:assets";
 const {
-  data: { title, description, tags, image },
+  data: { title, tags, image },
   slug,
 } = Astro.props;
 ---
 
-<a href={`/posts/${slug}`}>
-  <article class="relative">
+<a
+  href={`/posts/${slug}`}
+  class:list={`group overflow-hidden rounded-xl animatePost ${
+    title.length > 60 || title.length == 45 ? "md:col-span-2" : ""
+  }`}
+>
+  <article class="relative h-full">
     {
       image ? (
         <Image
-          class="rounded-xl object-cover min-h-[200px]"
+          class="animateImage rounded-xl object-cover h-[210px] max-h-full group-hover:scale-105 transition-transform ease-linear"
           src={image}
-          width={720}
-          height={320}
-          format="avif"
-          quality={"low"}
+          width={1200}
+          height={630}
+          format={"avif"}
+          quality={"mid"}
           alt={title}
         />
       ) : (
@@ -27,7 +32,7 @@ const {
     <div
       class="absolute w-full bottom-0 p-4 rounded-xl backdrop-blur-2xl backdrop-brightness-50 bg-black/10"
     >
-      <h1 class="text-lg text-white line-clamp-3 leading-tight font-medium">
+      <h1 class="text-lg text-white line-clamp-2 leading-tight font-medium">
         {title}
       </h1>
       <nav class="pt-2.5 flex flex-wrap gap-3">

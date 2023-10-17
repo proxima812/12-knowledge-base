@@ -1,5 +1,6 @@
 ---
-import { settings } from "src/config";
+import { getEntry } from 'astro:content'
+import { settings } from "src/config"
 export interface Props {
   title: string;
   description?: string;
@@ -20,6 +21,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/open-graph.png", Astro.url)
 const titleSeparator = "•";
 
 const siteTitle = `${title} ${titleSeparator} ${settings.site.title}`;
+
 ---
 
 <meta charset="utf-8" />

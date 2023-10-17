@@ -1,4 +1,4 @@
-import { collection, config, fields } from "@keystatic/core"
+import { collection, config, fields } from "@keystatic/core";
 
 export default config({
   storage: {
@@ -9,13 +9,12 @@ export default config({
       label: "Посты",
       slugField: "title",
       path: "src/content/blog/*",
-      entryLayout: 'content',
-      format: { contentField: 'content' },
+      entryLayout: "content",
+      format: { contentField: "content" },
       schema: {
-          title: fields.slug({
-          name: { label: 'Заголовок', validation: { length: { min: 3 } } },
-          }),
-        
+        title: fields.slug({
+          name: { label: "Заголовок", validation: { length: { min: 3 } } },
+        }),
         content: fields.document({
           label: "Контент",
           formatting: true,
@@ -25,57 +24,126 @@ export default config({
         }),
 
         description: fields.text({
-          label: 'Описание (Description)',
+          label: "Описание (Description)",
           multiline: true,
-          validation: { length: { min: 15 }},
+          validation: { length: { min: 15 } },
         }),
 
         tags: fields.array(
-            fields.relationship({
-              label: 'Тег',
-              collection: 'tags'
-            }), {
-              label: 'Теги',
-              itemLabel: (props) => props.value ?? 'Выберите тег(-и)',
-              validation: { length: { min: 1 } },
-            }
+          fields.relationship({
+            label: "Тег",
+            collection: "tags",
+          }),
+          {
+            label: "Теги",
+            itemLabel: (props) => props.value ?? "Выберите тег(-и)",
+            validation: { length: { min: 1 } },
+          },
         ),
-        
+
         image: fields.image({
-          label: 'Изображение к посту',
-          directory: 'src/assets/images/posts',
-          publicPath: '../../assets/images/posts',
+          label: "Изображение к посту",
+          directory: "src/assets/images/posts",
+          publicPath: "../../assets/images/posts",
         }),
 
         pubDate: fields.date({
-          label: 'Дата публикации',
+          label: "Дата публикации",
         }),
 
-         modDate: fields.empty(),
+        modDate: fields.empty(),
 
         draft: fields.checkbox({
-          label: 'Черновик',
+          label: "Черновик",
           defaultValue: false,
-          description: 'Установите этот пост как черновик, чтобы предотвратить его публикацию.'
+          description:
+            "Установите этот пост как черновик, чтобы предотвратить его публикацию.",
         }),
 
         favorite: fields.checkbox({
-          label: 'Избранное',
+          label: "Избранное",
         }),
-
-      }
+      },
     }),
     tags: collection({
       label: "Теги к постам",
-      path: 'src/content/tags/*',
-      slugField: 'name',      
+      path: "src/content/tags/*",
+      slugField: "name",
       format: {
-        data: 'yaml',
-        contentField: 'markdoc',
+        data: "yaml",
+        contentField: "markdoc",
       },
       schema: {
         markdoc: fields.emptyDocument(),
         name: fields.text({ label: "Имя тега" }),
+      },
+    }),
+    communities: collection({
+      label: "Сообщеста",
+      slugField: "title",
+      path: "src/content/communities/*",
+      entryLayout: "content",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Заголовок", validation: { length: { min: 3 } } },
+        }),
+
+        description: fields.text({
+          label: "Описание (Description)",
+          multiline: true,
+          validation: { length: { min: 15 } },
+        }),
+
+        soon: fields.text({
+          label: "Основано",
+          defaultValue: "1999 г.",
+          description: "1935 г.",
+        }),
+
+        founders: fields.blocks(
+          {
+            founder: {
+              label: "Основатель",
+              schema: fields.object({
+                name: fields.text({
+                  label: "Имя",
+                }),
+                avatar: fields.image({
+                  label: "Фото",
+                  directory: "../assets/images/communities/founders",
+                  publicPath: "/src/assets/images/communities/founders/",
+                }),
+              }),
+            },
+            url: {
+              label: "Ссылки",
+              schema: fields.text({ label: "URL" }),
+            },
+          },
+          { label: "Основатели" },
+        ),
+
+        image: fields.image({
+          label: "Логотип сообщества",
+          directory: "src/assets/images/posts",
+          publicPath: "../../assets/images/posts",
+        }),
+
+        content: fields.document({
+          label: "Контент",
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: true,
+        }),
+
+        draft: fields.checkbox({
+          label: "Черновик",
+          defaultValue: false,
+          description:
+            "Установите этот пост как черновик, чтобы предотвратить его публикацию.",
+        }),
       },
     }),
   },
@@ -85,4 +153,4 @@ export default config({
   //     schema: {}
   //   }),
   // },
-})
+});
