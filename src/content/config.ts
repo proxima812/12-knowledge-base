@@ -23,4 +23,15 @@ const tags = defineCollection({
   }),
 });
 
-export const collections = { blog, tags };
+const communities = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().default("Анонимные "),
+      logoImage: image(),
+      soon: z.string(),
+      colorBg: z.string(),
+      links: z.array(z.string()).optional(),
+    }),
+});
+
+export const collections = { blog, tags, communities };

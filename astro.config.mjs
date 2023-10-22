@@ -30,5 +30,9 @@ export default defineConfig({
     markdoc({ allowHTML: true }),
   ],
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });

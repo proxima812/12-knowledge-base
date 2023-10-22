@@ -1,13 +1,25 @@
 ---
-import TGlink from "./TGlink.astro";
-import Search from "./icons/Search.astro";
-import User from "./icons/User.astro";
-
-const accent = "black";
+const links = [
+  { name: "Сообщества", link: "/communities" },
+  { name: "Поиск постов", link: "/search" },
+  { name: "Keystatic", link: "/keystatic", target: "_blank" },
+  { name: "", link: "" },
+];
 ---
 
-<nav class="flex flex-wrap justify-center gap-3 items-center">
-  <User
+<nav class="flex flex-wrap justify-center gap-6 items-center">
+  {
+    links.map((a) => (
+      <a
+        href={a.link}
+        class="font-medium text-gray-800 hover:text-gray-950 hover:translate-y-[-1.15px] transition-transform ease-in"
+        target={a.target}
+      >
+        {a.name}
+      </a>
+    ))
+  }
+  <!-- <User
     color={accent}
     name="KeyStatic"
     className="bounceUp"
@@ -20,5 +32,5 @@ const accent = "black";
     className="bounceUp"
     link="/search"
   />
-  <TGlink link="https://t.me/fb_steps_bot" name="fb_steps_bot" />
+  <TGlink link="https://t.me/fb_steps_bot" name="fb_steps_bot" /> -->
 </nav>

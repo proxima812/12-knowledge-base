@@ -89,11 +89,11 @@ export default config({
           name: { label: "Заголовок", validation: { length: { min: 3 } } },
         }),
 
-        description: fields.text({
-          label: "Описание (Description)",
-          multiline: true,
-          validation: { length: { min: 15 } },
-        }),
+        // description: fields.text({
+        //   label: "Описание (Description)",
+        //   multiline: true,
+        //   validation: { length: { min: 15 } },
+        // }),
 
         soon: fields.text({
           label: "Основано",
@@ -101,34 +101,42 @@ export default config({
           description: "1935 г.",
         }),
 
-        founders: fields.blocks(
-          {
-            founder: {
-              label: "Основатель",
-              schema: fields.object({
-                name: fields.text({
-                  label: "Имя",
-                }),
-                avatar: fields.image({
-                  label: "Фото",
-                  directory: "../assets/images/communities/founders",
-                  publicPath: "/src/assets/images/communities/founders/",
-                }),
-              }),
-            },
-            url: {
-              label: "Ссылки",
-              schema: fields.text({ label: "URL" }),
-            },
-          },
-          { label: "Основатели" },
-        ),
+        // founders: fields.blocks(
+        //   {
+        //     founder: {
+        //       label: "Основатель",
+        //       schema: fields.object({
+        //         name: fields.text({
+        //           label: "Имя",
+        //         }),
+        //         avatar: fields.image({
+        //           label: "Фото",
+        //           directory: "../assets/images/communities/founders",
+        //           publicPath: "/src/assets/images/communities/founders/",
+        //         }),
+        //       }),
+        //     },
+        //     url: {
+        //       label: "Ссылки",
+        //       schema: fields.text({ label: "URL" }),
+        //     },
+        //   },
+        //   { label: "Основатели" },
+        // ),
 
-        image: fields.image({
-          label: "Логотип сообщества",
-          directory: "src/assets/images/posts",
-          publicPath: "../../assets/images/posts",
+        colorBg: fields.text({
+          label: "Цвет",
+          defaultValue: "none",
+          description: "blue",
         }),
+
+        logoImage: fields.image({
+          label: "Логотип сообщества",
+          directory: "src/assets/images/communities",
+          publicPath: "../../assets/images/communities",
+        }),
+
+        links: fields.array(fields.url({ label: "URL" })),
 
         content: fields.document({
           label: "Контент",
@@ -138,12 +146,12 @@ export default config({
           images: true,
         }),
 
-        draft: fields.checkbox({
-          label: "Черновик",
-          defaultValue: false,
-          description:
-            "Установите этот пост как черновик, чтобы предотвратить его публикацию.",
-        }),
+        // draft: fields.checkbox({
+        //   label: "Черновик",
+        //   defaultValue: false,
+        //   description:
+        //     "Установите этот пост как черновик, чтобы предотвратить его публикацию.",
+        // }),
       },
     }),
   },

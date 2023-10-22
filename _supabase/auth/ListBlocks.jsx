@@ -1,4 +1,4 @@
-import { sanitizeQuillOutput } from "@utils/sanitizeQuillOutput.js";
+import { sanitizeQuillOutput } from "_utils/sanitizeQuillOutput.js";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
