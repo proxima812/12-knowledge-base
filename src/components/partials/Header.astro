@@ -6,11 +6,9 @@ const { max_w } = Astro.props;
 const accent = "black";
 ---
 
-<header class="bg-white py-5">
-  <div class={`${max_w} container px-5 mx-auto`}>
-    <div
-      class="flex flex-wrap gap-6 justify-center md:justify-between items-center"
-    >
+<header class="py-5 shadow-[0px_1px_0px_rgba(0,0,0,.05);]">
+  <div class:list={`container px-5 mx-auto ${max_w ? max_w : "max-w-full"}`}>
+    <div class="flex justify-between items-center gap-6">
       <a href="/">
         <Infinity12 color={accent} />
       </a>

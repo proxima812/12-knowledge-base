@@ -10,7 +10,7 @@ const posts = list
 ---
 
 <div
-  class="grid grid-flow-row-dense gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  class="py-5 grid grid-flow-row-dense gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 >
   {
     posts.map((post, index) => (
@@ -21,16 +21,35 @@ const posts = list
 
 <script>
   // motion.dev
-  import { animate, spring, stagger } from "motion";
+  import { spring, stagger, timeline } from "motion";
 
-  animate(
-    ".animatePost",
-    { opacity: [0, 100], y: ["5%", "0%"] },
-    { easing: spring({ velocity: 200 }), duration: 1, delay: stagger(0.08) },
-  );
-  animate(
-    ".animateImage",
-    { height: ["0px", "210px"] },
-    { easing: spring({ velocity: 200 }), duration: 1 },
-  );
+  const sequence = [
+    [
+      ".animateImage",
+      { height: ["0px", "210px"] },
+      { easing: spring({ velocity: 200 }), duration: 1 },
+    ],
+    [
+      ".animatePost",
+      { opacity: [0, 100], y: ["5%", "0%"] },
+      {
+        easing: spring({ velocity: 200 }),
+        duration: 1,
+        delay: stagger(0.08),
+        at: "<",
+      },
+    ],
+  ];
+  timeline(sequence);
+
+  // animate(
+  //   ".animatePost",
+  //   { opacity: [0, 100], y: ["5%", "0%"] },
+  //   { easing: spring({ velocity: 200 }), duration: 1, delay: stagger(0.08) },
+  // );
+  // animate(
+  //   ".animateImage",
+  //   { height: ["0px", "210px"] },
+  //   { easing: spring({ velocity: 200 }), duration: 1 },
+  // );
 </script>

@@ -17,6 +17,15 @@ const blog = defineCollection({
     }),
 });
 
+const blocks = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      heading: z.string(),
+      text: z.string(),
+      imgSrc: image(),
+    }),
+});
+
 const tags = defineCollection({
   schema: z.object({
     name: z.string().optional(),
@@ -34,4 +43,4 @@ const communities = defineCollection({
     }),
 });
 
-export const collections = { blog, tags, communities };
+export const collections = { blog, tags, communities, blocks };

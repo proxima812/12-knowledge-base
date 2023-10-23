@@ -1,14 +1,14 @@
 ---
-import DecorationBG from "@components/DecorationBG.astro"
-import PageWrapper from "@components/partials/PageWrapper.astro"
-import BaseLayout from "@layouts/BaseLayout.astro"
+import DecorationBG from "@components/DecorationBG.astro";
+import PageWrapper from "@components/partials/PageWrapper.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
-import Inst from "@components/icons/forCommunities/Inst.astro"
-import TG from "@components/icons/forCommunities/TG.astro"
-import VK from "@components/icons/forCommunities/VK.astro"
-import YB from "@components/icons/forCommunities/YB.astro"
-import { Image } from "astro:assets"
-import { getCollection } from "astro:content"
+import Inst from "@components/icons/forCommunities/Inst.astro";
+import TG from "@components/icons/forCommunities/TG.astro";
+import VK from "@components/icons/forCommunities/VK.astro";
+import YB from "@components/icons/forCommunities/YB.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 export const prerender = true;
 
 export async function getStaticPaths() {
@@ -34,106 +34,108 @@ const spanClass = "text-blue-500";
   articleDate
   max_w="max-w-6xl"
 >
-  <PageWrapper gap="8">
-    <!-- from-${post.data.colorBg}-200/60  -->
-    <DecorationBG />
+  <div class="py-8">
+    <PageWrapper gap="8">
+      <!-- from-${post.data.colorBg}-200/60  -->
+      <DecorationBG />
 
-    <!-- <div class="flex items-center gap-6">
-      <a
-        href="/communities"
-        class="px-3 py-2 rounded-lg bg-white font-medium self-start"
-        >Вернуться</a
-      >
-      <Breadcrumbs />
-    </div> -->
-
-    <div class="flex items-center flex-wrap gap-6">
-      {
-        post.data.logoImage && (
-          <Image
-            transition:name={`img-${post.data.logoImage}`}
-            class="rounded-full ring-1 ring-gray-100 object-cover w-24 md:w-44 h-24 md:h-44"
-            width={1200}
-            height={360}
-            src={post.data.logoImage}
-            alt={"Логотип: " + post.data.title}
-            format={"avif"}
-            quality={"mid"}
-          />
-        )
-      }
-      <div class="flex flex-col gap-4">
-        <h1
-          transition:name={`h1-${post.data.title}`}
-          class="text-4xl lg:text-5xl font-bold"
+      <!-- <div class="flex items-center gap-6">
+        <a
+          href="/communities"
+          class="px-3 py-2 rounded-lg bg-white font-medium self-start"
+          >Вернуться</a
         >
-          {post.data.title}
-        </h1>
+        <Breadcrumbs />
+      </div> -->
 
-        <p>Дата основания: <b>{post.data.soon}</b></p>
-        <nav class="flex gap-4 flex-wrap">
-          {
-            post.data.links.map((link) => {
-              if (link.startsWith("https://vk.com/")) {
-                return (
-                  <a href={link} class={aClass}>
-                    <VK />{" "}
-                    <span class={spanClass}>
-                      {link.replace("https://vk.com/", "")}
-                    </span>
-                  </a>
-                );
-              }
-              if (link.startsWith("https://t.me/")) {
-                return (
-                  <a href={link} class={aClass}>
-                    <TG />{" "}
-                    <span class={spanClass}>
-                      {link.replace("https://t.me/", "")}
-                    </span>
-                  </a>
-                );
-              }
-              if (link.startsWith("https://www.instagram.com/")) {
-                return (
-                  <a href={link} class={aClass}>
-                    <Inst />{" "}
-                    <span class={spanClass}>
-                      {link.replace("https://www.instagram.com/", "")}
-                    </span>
-                  </a>
-                );
-              }
-              if (link.startsWith("https://www.youtube.com/")) {
-                return (
-                  <a href={link} class={aClass}>
-                    <YB />{" "}
-                    <span class={spanClass}>
-                      {link.replace("https://www.youtube.com/", "")}
-                    </span>
-                  </a>
-                );
-              } else {
-                return (
-                  <a href={link} class={aClass}>
-                    <span class="text-[24px]">🌐</span>{" "}
-                    <span class={spanClass}>
-                      {link.replace("https://", "")}
-                    </span>
-                  </a>
-                );
-              }
-            })
-          }
-        </nav>
+      <div class="flex items-center flex-wrap gap-6">
+        {
+          post.data.logoImage && (
+            <Image
+              transition:name={`img-${post.data.logoImage}`}
+              class="rounded-full ring-1 ring-gray-100 object-cover w-24 md:w-44 h-24 md:h-44"
+              width={1200}
+              height={360}
+              src={post.data.logoImage}
+              alt={"Логотип: " + post.data.title}
+              format={"avif"}
+              quality={"mid"}
+            />
+          )
+        }
+        <div class="flex flex-col gap-4">
+          <h1
+            transition:name={`h1-${post.data.title}`}
+            class="text-4xl lg:text-5xl font-bold"
+          >
+            {post.data.title}
+          </h1>
+
+          <p>Дата основания: <b>{post.data.soon}</b></p>
+          <nav class="flex gap-4 flex-wrap">
+            {
+              post.data.links.map((link) => {
+                if (link.startsWith("https://vk.com/")) {
+                  return (
+                    <a href={link} class={aClass}>
+                      <VK />{" "}
+                      <span class={spanClass}>
+                        {link.replace("https://vk.com/", "")}
+                      </span>
+                    </a>
+                  );
+                }
+                if (link.startsWith("https://t.me/")) {
+                  return (
+                    <a href={link} class={aClass}>
+                      <TG />{" "}
+                      <span class={spanClass}>
+                        {link.replace("https://t.me/", "")}
+                      </span>
+                    </a>
+                  );
+                }
+                if (link.startsWith("https://www.instagram.com/")) {
+                  return (
+                    <a href={link} class={aClass}>
+                      <Inst />{" "}
+                      <span class={spanClass}>
+                        {link.replace("https://www.instagram.com/", "")}
+                      </span>
+                    </a>
+                  );
+                }
+                if (link.startsWith("https://www.youtube.com/")) {
+                  return (
+                    <a href={link} class={aClass}>
+                      <YB />{" "}
+                      <span class={spanClass}>
+                        {link.replace("https://www.youtube.com/", "")}
+                      </span>
+                    </a>
+                  );
+                } else {
+                  return (
+                    <a href={link} class={aClass}>
+                      <span class="text-[24px]">🌐</span>{" "}
+                      <span class={spanClass}>
+                        {link.replace("https://", "")}
+                      </span>
+                    </a>
+                  );
+                }
+              })
+            }
+          </nav>
+        </div>
       </div>
-    </div>
 
-    <main
-      style="max-width: 100%;"
-      class="prose prose-headings:leading-tight prose-p:leading-relaxed prose-slate max-w-none md:prose-lg lg:prose-xl"
-    >
-      <Content />
-    </main>
-  </PageWrapper>
+      <main
+        style="max-width: 100%;"
+        class="prose prose-headings:leading-tight prose-p:leading-relaxed prose-slate max-w-none md:prose-lg lg:prose-xl"
+      >
+        <Content />
+      </main>
+    </PageWrapper>
+  </div>
 </BaseLayout>

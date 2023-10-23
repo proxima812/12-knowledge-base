@@ -1,7 +1,8 @@
 ---
 import Head from "@components/Head.astro";
 import ToUp from "@components/ToUp.astro";
-import Wrapper from "@components/partials/MainWrapper.astro";
+import Footer from "@components/partials/Footer.astro";
+import Header from "@components/partials/Header.astro";
 import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
 const { title, description, image, articleDate, max_w } = Astro.props;
@@ -15,12 +16,14 @@ const { title, description, image, articleDate, max_w } = Astro.props;
       ogImage={image}
       articleDate={articleDate}
     />
-    <ViewTransitions fallback="swap" />
+    <!-- <ViewTransitions fallback="swap" /> -->
   </head>
   <body>
-    <Wrapper max_w={max_w}>
+    <Header max_w={max_w} />
+    <div class:list={`container px-5 mx-auto ${max_w ? max_w : "max-w-full"}`}>
       <slot />
-    </Wrapper>
+    </div>
+    <Footer max_w={max_w} />
     <ToUp />
   </body>
 </html>

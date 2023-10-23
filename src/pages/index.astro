@@ -1,15 +1,114 @@
 ---
-import ListPosts from "@components/ListPosts.astro";
-import PageWrapper from "@components/partials/PageWrapper.astro";
-import TextAnimate from "@components/textAnimate.astro";
 import Base from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+const bg_text = "text-transparent bg-clip-text bg-gradient-to-tr";
+
+const words = [
+  { word: "Материалы", emodji: "📚", bg: "from-purple-400 to-indigo-500" },
+  { word: "Посты", emodji: "✍", bg: "from-yellow-400 to-amber-500" },
+  { word: "Руководства", emodji: "📑", bg: "from-blue-400 to-sky-500" },
+  { word: "Опыт", emodji: "🤡", bg: "from-green-400 to-lime-500" },
+];
+
+const blockList = await getCollection("blocks");
 ---
 
 <Base title="Посты" max_w="max-w-6xl">
-  <PageWrapper gap="8">
-  
-  </PageWrapper>
-  <!-- <Heading /> -->
-  <!-- <Aside /> -->
-  <ListPosts />
+  <!-- 
+  while DEV MODE - OFF  
+    <PreLoader /> 
+  -->
+
+  <main class="flex flex-col gap-32 py-32">
+    <section class="flex flex-col gap-20">
+      <h1 class="max-w-4xl">
+        <span class="block text-6xl lg:text-8xl mb-6 font-bold">12 шагов:</span>
+        <div class="flex-wrap flex gap-3">
+          {
+            words.map((p) => (
+              <p class="font-semibold text-4xl lg:text-6xl">
+                {p.emodji}&shy;
+                <span class={`${bg_text} ${p.bg}`}>{p.word}</span>
+              </p>
+            ))
+          }
+        </div>
+      </h1>
+      <a
+        href="https://t.me/all_12steps"
+        class="hover:-translate-y-1 transition-transform ease-out good-shadow text-3xl lg:text-4xl bg-black rounded-xl text-white self-start p-5"
+        >👉 Зайти в группу</a
+      >
+    </section>
+
+    <div class="p-10 md:p-20 flex flex-col gap-28">
+      {
+        blockList.map((item, index) => (
+          <section id="showMeSection" class="opacity-0">
+            <div class="flex flex-col md:flex-row gap-14 md:gap-28 items-center">
+              {item.data.imgSrc ? (
+                <Image
+                  width={1200}
+                  height={1200}
+                  class:list={`${
+                    index % 2 == 1 ? "md:order-2 " : ""
+                  } object-cover md:w-[420px] md:h-[420px] rounded-2xl`}
+                  src={item.data.imgSrc}
+                  alt={item.data.heading}
+                  quality={"mid"}
+                  format="avif"
+                />
+              ) : (
+                <div class="w-[420] h-[420] aspect-square bg-slate-500 rounded-2xl" />
+              )}
+              <div class="flex flex-col gap-3">
+                <h4 class="text-4xl font-bold">{item.data.heading}</h4>
+                <p class="text-lg leading-relaxed text-gray-600">
+                  {item.data.text}
+                </p>
+              </div>
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+
+  <script>
+    import { animate, inView, spring, stagger } from "motion";
+    // import SplitType from "split-type";
+    // const splith1 = new SplitType('');
+
+    animate(
+      "h1",
+      {
+        opacity: [0, 1],
+        transform: ["translate3d(0px, 40px, 0px)", "translateZ(0px)"],
+      },
+      {
+        duration: 1.2,
+      },
+    );
+    animate(
+      "h1 p",
+      {
+        opacity: [0, 1],
+        transform: ["translate3d(0px, 40px, 0px)", "translateZ(0px)"],
+      },
+      {
+        duration: 1.2,
+        easing: spring(),
+        delay: stagger(0.5),
+      },
+    );
+
+    inView(
+      "#showMeSection",
+      (info) => {
+        animate(info.target, { opacity: 1 }, { duration: 1 });
+      },
+      { margin: "-50% 0px -50% 0px" },
+    );
+  </script>
 </Base>

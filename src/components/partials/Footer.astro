@@ -5,90 +5,88 @@ const { max_w } = Astro.props;
 const class_a =
   "block text-gray-500 mt-3 text-sm font-medium duration-700 hover:underline";
 
-const list = await getCollection("blog");
-const postsTag1 = list.filter(
-  (post) => !post.data.draft & post.data.tags.includes("12 шагов"),
-);
-const postsTag2 = list.filter(
-  (post) => !post.data.draft & post.data.tags.includes("12 традиций"),
-);
-const postsTag3 = list.filter(
-  (post) => !post.data.draft & post.data.tags.includes("Разработка"),
-);
-const postsTag4 = list.filter(
-  (post) => !post.data.draft & post.data.tags.includes("Принципы"),
-);
+// const list = await getCollection("blog");
+// const postsTag1 = list.filter(
+//   (post) => !post.data.draft & post.data.tags.includes("12 шагов"),
+// );
+// const postsTag2 = list.filter(
+//   (post) => !post.data.draft & post.data.tags.includes("12 традиций"),
+// );
+// const postsTag3 = list.filter(
+//   (post) => !post.data.draft & post.data.tags.includes("Разработка"),
+// );
+// const postsTag4 = list.filter(
+//   (post) => !post.data.draft & post.data.tags.includes("Принципы"),
+// );
 ---
 
-<footer class="py-5">
-  <div class={`${max_w} container px-5 mx-auto`}>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      <div>
-        <div class="shagov-12 text-xs font-medium p-2 rounded-md uppercase">
-          12 Шагов
-        </div>
-        {
-          postsTag1.map((link) => (
-            <a href={`/posts/${link.slug}`} class={class_a}>
-              {" "}
-              {link.data.title}
-            </a>
-          ))
-        }
+<!-- <footer class="py-5">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div>
+      <div class="shagov-12 text-xs font-medium p-2 rounded-md uppercase">
+        12 Шагов
       </div>
-
-      <div>
-        <div class="tra-12 text-xs font-medium p-2 rounded-md uppercase">
-          12 Традиций
-        </div>
-
-        {
-          postsTag2.map((link) => (
-            <a href={`/posts/${link.slug}`} class={class_a}>
-              {" "}
-              {link.data.title}
-            </a>
-          ))
-        }
-      </div>
-
-      <div>
-        <div class="principy text-xs font-medium p-2 rounded-md uppercase">
-          Принципы
-        </div>
-
-        {
-          postsTag4.map((link) => (
-            <a href={`/posts/${link.slug}`} class={class_a}>
-              {" "}
-              {link.data.title}
-            </a>
-          ))
-        }
-      </div>
-      <div>
-        <div class="razrabotka text-xs font-medium p-2 rounded-md uppercase">
-          Разработка
-        </div>
-
-        {
-          postsTag3.map((link) => (
-            <a href={`/posts/${link.slug}`} class={class_a}>
-              {" "}
-              {link.data.title}
-            </a>
-          ))
-        }
-      </div>
+      {
+        postsTag1.map((link) => (
+          <a href={`/posts/${link.slug}`} class={class_a}>
+            {" "}
+            {link.data.title}
+          </a>
+        ))
+      }
     </div>
 
-    <hr class="my-5 border-gray-200" />
+    <div>
+      <div class="tra-12 text-xs font-medium p-2 rounded-md uppercase">
+        12 Традиций
+      </div>
 
-    <div class="text-gray-500 flex justify-between flex-wrap gap-3">
-      <span>✍ 2023</span>
-      <a href="https://t.me/all_12steps"
-        >от группы 12 шагов - база знаний, 🙏 с целью помочь.</a
-      >
+      {
+        postsTag2.map((link) => (
+          <a href={`/posts/${link.slug}`} class={class_a}>
+            {" "}
+            {link.data.title}
+          </a>
+        ))
+      }
+    </div>
+
+    <div>
+      <div class="principy text-xs font-medium p-2 rounded-md uppercase">
+        Принципы
+      </div>
+
+      {
+        postsTag4.map((link) => (
+          <a href={`/posts/${link.slug}`} class={class_a}>
+            {" "}
+            {link.data.title}
+          </a>
+        ))
+      }
+    </div>
+    <div>
+      <div class="razrabotka text-xs font-medium p-2 rounded-md uppercase">
+        Разработка
+      </div>
+
+      {
+        postsTag3.map((link) => (
+          <a href={`/posts/${link.slug}`} class={class_a}>
+            {" "}
+            {link.data.title}
+          </a>
+        ))
+      }
     </div>
   </div>
-</footer>
+
+  <hr class="my-5 border-gray-200" />
+
+  <div class="text-gray-500 flex justify-between flex-wrap gap-3">
+    <span>✍ 2023</span>
+    <a href="https://t.me/all_12steps"
+      >от группы 12 шагов - база знаний, 🙏 с целью помочь.</a
+    >
+  </div>
+</footer> -->

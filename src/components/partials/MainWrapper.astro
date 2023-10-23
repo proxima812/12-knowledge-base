@@ -12,11 +12,13 @@ const { max_w, px = "5", mx = "auto" } = Astro.props;
 ---
 
 <main class="min-h-screen flex flex-col gap-12">
-  <Header max_w={max_w} />
-  <div
-    class:list={`container px-${px} mx-${mx} ${max_w ? max_w : "max-w-full"}`}
-  >
-    <slot />
+  <div class="flex">
+    <Header max_w={max_w} />
+    <div
+      class:list={`container px-${px} mx-${mx} ${max_w ? max_w : "max-w-full"}`}
+    >
+      <slot />
+    </div>
   </div>
   <Footer max_w={max_w} />
 </main>

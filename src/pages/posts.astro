@@ -1,0 +1,11 @@
+---
+import ListPosts from "@components/ListPosts.astro";
+import PageWrapper from "@components/partials/PageWrapper.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Посты" max_w="max-w-6xl">
+  <PageWrapper gap="5">
+    <ListPosts />
+  </PageWrapper>
+</BaseLayout>

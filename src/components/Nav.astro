@@ -1,36 +1,66 @@
 ---
-const links = [
+const nav_links = [
+  { name: "Посты", link: "/posts" },
   { name: "Сообщества", link: "/communities" },
-  { name: "Поиск постов", link: "/search" },
-  { name: "Keystatic", link: "/keystatic", target: "_blank" },
-  { name: "", link: "" },
+  { name: "🔍 Поиск постов", link: "/search" },
+  {
+    name: "💋 Keystatic",
+    link: "/keystatic",
+    target: "_blank",
+  },
 ];
+
+import MobileIconNav from "@components/icons/MobileIconNav.astro";
 ---
 
-<nav class="flex flex-wrap justify-center gap-6 items-center">
-  {
-    links.map((a) => (
-      <a
-        href={a.link}
-        class="font-medium text-gray-800 hover:text-gray-950 hover:translate-y-[-1.15px] transition-transform ease-in"
-        target={a.target}
-      >
-        {a.name}
-      </a>
-    ))
-  }
-  <!-- <User
-    color={accent}
-    name="KeyStatic"
-    className="bounceUp"
-    link="/keystatic"
-    target="blank"
-  />
-  <Search
-    color={accent}
-    name="Найти пост"
-    className="bounceUp"
-    link="/search"
-  />
-  <TGlink link="https://t.me/fb_steps_bot" name="fb_steps_bot" /> -->
+<nav>
+  <span id="btn" class="lg:hidden block"><MobileIconNav /></span>
+  <div class="hidden" id="menu">
+    <div
+      class="z-[999] overflow-hidden absolute left-0 top-[86px] p-10 bg-black/50 backdrop-blur-xl flex gap-6 flex-col w-full h-screen"
+    >
+      {
+        nav_links.map((a) => (
+          <a
+            href={a.link}
+            class={`font-medium text-white text-2xl`}
+            target={a.target}
+          >
+            {a.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <div class="hidden lg:flex gap-6">
+    {
+      nav_links.map((a) => (
+        <a
+          href={a.link}
+          class="font-medium text-gray-800 hover:text-gray-950 hover:translate-y-[-1.15px] transition-transform ease-in"
+          target={a.target}
+        >
+          {a.name}
+        </a>
+      ))
+    }
+  </div>
 </nav>
+
+<script>
+  import { animate, spring, stagger } from "motion";
+  const menu = document.querySelector("#menu");
+  const btn = document.querySelector("#btn");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+    animate(
+      "#menu a",
+      {
+        x: [-25, 0],
+        opacity: [0, 1],
+      },
+      { duration: 1.2, easing: spring(), delay: stagger(0.03) },
+    );
+  });
+</script>

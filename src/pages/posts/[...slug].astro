@@ -41,44 +41,47 @@ const { Content, headings } = await post.render();
   articleDate
   max_w="max-w-6xl"
 >
-  <PageWrapper gap="8">
-    <DecorationBG />
-    <!-- {
-      post.data.image && (
-        <Image
-          class="rounded-md cover"
-          width={1200}
-          height={360}
-          src={post.data.image}
-          alt={"Изображнение к посту: " + post.data.title}
-          format={"avif"}
-          quality={"mid"}
-        />
-      )
-    } -->
+  <div class="py-8">
+    <PageWrapper gap="8">
+      <DecorationBG />
+      <!-- {
+        post.data.image && (
+          <Image
+            class="rounded-md cover"
+            width={1200}
+            height={360}
+            src={post.data.image}
+            alt={"Изображнение к посту: " + post.data.title}
+            format={"avif"}
+            quality={"mid"}
+          />
+        )
+      } -->
 
-    <div class="flex items-center justify-between gap-5 flex-wrap">
-      <a href="/" class="px-3 py-2 rounded-lg bg-white font-medium">Вернуться</a
-      >
-      <Socials />
-    </div>
-
-    <div>
-      <h1 class="text-4xl font-bold">
-        {post.data.title}
-      </h1>
-      <p class="mt-3 text-gray-400">{post.data.description}</p>
-    </div>
-
-    <main class="flex items-start gap-12">
-      <div class="prose md:prose-md lg:prose-lg max-w-none">
-        <Content />
+      <div class="flex items-center justify-between gap-5 flex-wrap">
+        <a href="/posts" class="px-3 py-2 rounded-lg bg-white font-medium"
+          >Вернуться</a
+        >
+        <Socials />
       </div>
-      <aside class="sticky top-5 shrink-0 max-w-[290px]">
-        {headings && headings.length > 0 && <TableOfContents {headings} />}
-      </aside>
-    </main>
-  </PageWrapper>
+
+      <div>
+        <h1 class="text-4xl font-bold">
+          {post.data.title}
+        </h1>
+        <p class="mt-3 text-gray-400">{post.data.description}</p>
+      </div>
+
+      <main class="flex items-start gap-12">
+        <div class="prose md:prose-md lg:prose-lg max-w-none">
+          <Content />
+        </div>
+        <aside class="sticky top-5 shrink-0 max-w-[290px]">
+          {headings && headings.length > 0 && <TableOfContents {headings} />}
+        </aside>
+      </main>
+    </PageWrapper>
+  </div>
 
   <!-- components={{ pre: Code }} ----  <Content /> -->
   <!-- {

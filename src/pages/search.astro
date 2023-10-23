@@ -12,7 +12,9 @@ const searchList = posts.map((post) => ({
 ---
 
 <BaseLayout title="" description="">
-  <PageWrapper gap="8">
-    <Search client:load searchList={searchList} />
-  </PageWrapper>
+  <div class="py-8">
+    <PageWrapper gap="8">
+      <Search client:load searchList={searchList} />
+    </PageWrapper>
+  </div>
 </BaseLayout>
