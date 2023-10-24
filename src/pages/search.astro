@@ -5,8 +5,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { getSinglePage } from "@utils/contentParser";
 const posts = await getSinglePage("blog");
 
-
-
 const searchList = posts.map((post) => ({
   slug: post.slug,
   data: post.data,
